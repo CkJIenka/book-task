@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "http://tatiana.kubesh.ru",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

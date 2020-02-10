@@ -1,0 +1,11 @@
+<div class="container">
+
+  <input type="text" placeholder="search">
+
+  <ul>
+    <li *ngFor="let author of authors ">
+      <a href="#">{{ author.first_name }} {{ author.last_name }}</a>
+    </li>
+  </ul>
+
+</div>

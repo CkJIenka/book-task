@@ -1,0 +1,28 @@
+div {
+  display: inline;
+  margin-top: 10px;
+}
+
+button {
+  width: 30px;
+  height: 30px;
+  margin: 10px 5px;
+  padding: 5px;
+  border: 1px #666 solid;
+  outline: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  border: 1px #303030 solid;
+  background-color: #cdcdcd;
+}
+button:active {
+  border: 1px #666 solid;
+  background-color: white;
+  opacity: 0.5;
+}
+
+.activeButton {
+  background-color: slategrey;
+}
