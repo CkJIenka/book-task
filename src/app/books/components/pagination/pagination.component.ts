@@ -10,12 +10,12 @@ import { PaginationService } from '../../services/pagination.service';
 export class PaginationComponent implements OnInit {
 
   @Input()
-  set receivedPagesData(value: number) {
-    this._receivedPagesData = value;
+  set receivedMeta(value: number) {
+    this.receivedPagesData = value;
     this._createPaginator();
   }
-  get receivedPagesData(): number {
-    return this._receivedPagesData;
+  get receivedMeta(): number {
+    return this.receivedPagesData;
   }
 
   public activedButton = true;
@@ -23,8 +23,8 @@ export class PaginationComponent implements OnInit {
 
   @Output() public selectPage = new EventEmitter<number>();
 
-  private _receivedPagesData: number;
-  private _currentPageNumber = 1;
+  public receivedPagesData: number;
+  public currentPageNumber = 1;
 
   constructor(
     protected paginationService: PaginationService,
@@ -32,27 +32,35 @@ export class PaginationComponent implements OnInit {
 
   public ngOnInit(): void { }
 
-  protected selectPageNumber(page: number): void {
+  public previousPage(): void {
+    if (this.currentPageNumber > 1) {
+      this.selectPageNumber(this.currentPageNumber - 1);
+    }
+  }
+
+  public nextPage(): void {
+    if (this.currentPageNumber < this.receivedMeta) {
+      this.selectPageNumber(this.currentPageNumber + 1);
+    }
+  }
+
+  public selectPageNumber(page: number): void {
     this.selectPage.emit(page);
-    this._currentPageNumber = page;
+    this.currentPageNumber = page;
     this._createPaginator();
+  }
+
+  public goFirst(page: number): void {
+    this.selectPageNumber(page);
+  }
+
+  public goLast(page: number): void {
+    this.selectPageNumber(page);
   }
 
   private _createPaginator(): any {
     this.pagesAmount =
-      this.paginationService.createPaginator(this._currentPageNumber, this.receivedPagesData);
-  }
-
-  private _previousPage(): void {
-    if (this._currentPageNumber > 1) {
-      this.selectPageNumber(this._currentPageNumber - 1);
-    }
-  }
-
-  private _nextPage(): void {
-    if (this._currentPageNumber < this.receivedPagesData) {
-      this.selectPageNumber(this._currentPageNumber + 1);
-    }
+      this.paginationService.createPaginator(this.currentPageNumber, this.receivedMeta);
   }
 
 }

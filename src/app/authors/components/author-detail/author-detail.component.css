@@ -19,23 +19,6 @@
   color: black;
 }
 
-.container ul {
-  margin-top: 20px;
-}
-
-.container li {
-  margin-top: 5px;
-}
-
-.container a {
-  text-decoration: none;
-  color: black;
-}
-
-.container a:hover {
-  color: #666666;
-}
-
 form {
   margin-top: 10px;
 }
@@ -54,7 +37,7 @@ form span {
 }
 
 .submitButton {
-  width: 80px;
+  width: 100px;
   height: 30px;
   border-radius: 5px;
   margin: 10px 350px;
@@ -66,25 +49,6 @@ form span {
 }
 
 .submitButton:active {
-  border: 1px #666 solid;
-  background-color: white;
-  opacity: 0.5;
-}
-
-.deleteButton {
-  padding: 3px;
-  float: right;
-  border: 1px solid #666;
-  border-radius: 5px;
-  outline: none;
-}
-
-.deleteButton:hover {
-  border: 1px #303030 solid;
-  background-color: #cdcdcd;
-}
-
-.deleteButton:active {
   border: 1px #666 solid;
   background-color: white;
   opacity: 0.5;

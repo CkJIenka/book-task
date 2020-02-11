@@ -1,7 +1,7 @@
-<button (click)="selectPageNumber(1)"><<</button>
-<button (click)="_previousPage()"><</button>
+<button (click)="goFirst(1)"><<</button>
+<button (click)="previousPage()"><</button>
 <div *ngFor="let page of pagesAmount">
-  <button (click)="selectPageNumber(page)" [ngClass]="page === _currentPageNumber ? {activeButton: activedButton} : ''">{{ page }}</button>
+  <button (click)="selectPageNumber(page)" [ngClass]="page === currentPageNumber ? {activeButton: activedButton} : ''">{{ page }}</button>
 </div>
-<button (click)="_nextPage()">></button>
-<button (click)="selectPageNumber(_receivedPagesData)">>></button>
+<button (click)="nextPage()">></button>
+<button (click)="goLast(receivedPagesData)">>></button>

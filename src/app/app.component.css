@@ -1,7 +1,17 @@
+.container {
+  width: 800px;
+  margin: 10px auto;
+}
+
 a {
   text-decoration: none;
   color: black;
   font-weight: bold;
+  margin: 10px;
+}
+
+a:first-child {
+  margin-left: 0;
 }
 
 a:hover {

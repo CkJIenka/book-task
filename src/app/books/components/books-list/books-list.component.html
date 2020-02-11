@@ -8,9 +8,9 @@
       <p>{{ book.title }}</p>
       <p>{{ book.description }}</p>
       <p>{{ book.price }} руб.</p>
-      <a routerLink="/detail/book/{{ book.id }}">Click Here for Some Detail</a>
+      <a routerLink="{{ book.id }}">Click Here for Some Detail</a>
     </div>
   </div>
 
-  <app-pagination [receivedPagesData]="pagesData" (selectPage)="changePage($event)"></app-pagination>
+  <app-pagination [receivedMeta]="requestMeta" (selectPage)="changePage($event)"></app-pagination>
 </div>

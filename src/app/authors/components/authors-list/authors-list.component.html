@@ -1,11 +1,33 @@
 <div class="container">
 
   <input type="text" placeholder="search">
-
+  <h3>List of authors:</h3>
   <ul>
     <li *ngFor="let author of authors ">
-      <a href="#">{{ author.first_name }} {{ author.last_name }}</a>
+      <a routerLink="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</a>
+      <button class="deleteButton" (click)="deleteAuthor(author.id)">Delete author</button>
     </li>
   </ul>
+
+  <h3>Adding new author:</h3>
+  <form [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm.value)">
+    <fieldset>
+      <label for="first_name">Enter author's first-name:
+        <input id="first_name" type="text" formControlName="first_name">
+      </label>
+    </fieldset>
+    <span *ngIf="first_name.touched && first_name.invalid && first_name.errors.required">
+      First-name is required.
+    </span>
+    <fieldset>
+      <label for="last_name">Enter author's last-name:
+        <input id="last_name" type="text" formControlName="last_name">
+      </label>
+    </fieldset>
+    <span *ngIf="last_name.touched && last_name.invalid && last_name.errors.required">
+      Last-name is required.
+    </span>
+    <button type="submit" [disabled]="authorForm.invalid" class="submitButton">Add author</button>
+  </form>
 
 </div>

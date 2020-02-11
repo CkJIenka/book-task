@@ -1,0 +1,26 @@
+<div class="container">
+ <p>Author's first-name: {{ author.first_name }}</p>
+ <p>Author's last-name: {{ author.last_name }}</p>
+
+<h3>Change Author's Information:</h3>
+  <form [formGroup]="authorChangedForm" (ngSubmit)="onSubmit(authorChangedForm.value)">
+    <fieldset>
+      <label for="first_name">Enter new author's first-name:
+        <input id="first_name" type="text" formControlName="first_name">
+      </label>
+    </fieldset>
+    <span *ngIf="first_name.touched && first_name.invalid && first_name.errors.required">
+        First-name is required.
+      </span>
+    <fieldset>
+      <label for="last_name">Enter new author's last-name:
+        <input id="last_name" type="text" formControlName="last_name">
+      </label>
+    </fieldset>
+    <span *ngIf="last_name.touched && last_name.invalid && last_name.errors.required">
+        Last-name is required.
+      </span>
+    <button type="submit" [disabled]="authorChangedForm.invalid" class="submitButton">Change author's information</button>
+  </form>
+
+</div>
