@@ -15,7 +15,7 @@ button {
 
 button:hover {
   border: 1px #303030 solid;
-  background-color: #cdcdcd;
+  background-color: #fae884;
 }
 button:active {
   border: 1px #666 solid;
@@ -24,5 +24,5 @@ button:active {
 }
 
 .activeButton {
-  background-color: slategrey;
+  background-color: #e8ce41;
 }

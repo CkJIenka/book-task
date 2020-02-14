@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { PaginationService } from '../../services/pagination.service';
+import { PaginationService } from './pagination.service';
 
 @Component({
   selector: 'app-pagination',
@@ -10,25 +10,27 @@ import { PaginationService } from '../../services/pagination.service';
 export class PaginationComponent implements OnInit {
 
   @Input()
-  set receivedMeta(value: number) {
+  public set receivedMeta(value: number) {
     this.receivedPagesData = value;
     this._createPaginator();
   }
-  get receivedMeta(): number {
+
+  public get receivedMeta(): number {
     return this.receivedPagesData;
   }
 
+  @Output()
+  public readonly selectPage = new EventEmitter<number>();
+
   public activedButton = true;
   public pagesAmount = [];
-
-  @Output() public selectPage = new EventEmitter<number>();
 
   public receivedPagesData: number;
   public currentPageNumber = 1;
 
   constructor(
     protected paginationService: PaginationService,
-    ) { }
+  ) {}
 
   public ngOnInit(): void { }
 
@@ -58,7 +60,7 @@ export class PaginationComponent implements OnInit {
     this.selectPageNumber(page);
   }
 
-  private _createPaginator(): any {
+  private _createPaginator(): void {
     this.pagesAmount =
       this.paginationService.createPaginator(this.currentPageNumber, this.receivedMeta);
   }

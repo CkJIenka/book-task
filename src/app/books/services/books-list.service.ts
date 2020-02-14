@@ -15,14 +15,7 @@ export class BooksListService {
     protected http: HttpClient,
   ) { }
 
-  public getBooks(): Observable<IResponceList> {
-    return this.http.get<IResponceList>('books')
-      .pipe(
-        catchError(this.handleError<IResponceList>('getBooks', {})),
-      );
-  }
-
-  public changePage(page: number): Observable<IResponceList> {
+  public getBooks(page: number = 1): Observable<IResponceList> {
     return this.http.get<IResponceList>(`books?page=${page}`)
       .pipe(
         catchError(this.handleError<IResponceList>('getBooks', {})),

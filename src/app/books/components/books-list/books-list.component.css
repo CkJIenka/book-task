@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .book-promo {
@@ -19,6 +21,7 @@ input {
   outline: none;
   padding: 5px;
   color: black;
+  margin-left: 12px;
 }
 
 .container div {
@@ -40,9 +43,16 @@ input {
 .book-description a {
   text-decoration: none;
   font-weight: bold;
-  color: black;
+  color: #9c9a3d;
 }
 
 .book-description a:hover {
-  text-decoration: underline;
+  color: #9e8b20;
+  cursor: pointer;
+}
+
+.book-title {
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Lemonada, cursive;
 }

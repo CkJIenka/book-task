@@ -5,12 +5,13 @@
   <div *ngFor="let book of books ">
     <img class="book-promo" src="../assets/images/book.jpg" alt="book-promo">
     <div  class="book-description">
-      <p>{{ book.title }}</p>
+      <p class="book-title">{{ book.title }}</p>
       <p>{{ book.description }}</p>
-      <p>{{ book.price }} руб.</p>
-      <a routerLink="{{ book.id }}">Click Here for Some Detail</a>
+      <p>{{ book.price | currency }}</p>
+      <a (click)="openBookDetail(book)">Click Here for Some Detail</a>
     </div>
   </div>
 
-  <app-pagination [receivedMeta]="requestMeta" (selectPage)="changePage($event)"></app-pagination>
+  <app-pagination [receivedMeta]="requestMeta" (selectPage)="getBooks($event)"></app-pagination>
 </div>
+

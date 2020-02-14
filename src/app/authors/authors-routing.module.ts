@@ -1,16 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthorsListComponent } from './components/authors-list/authors-list.component';
-import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
+import { AuthorsView } from './view/authors/authors.view';
+import { AuthorDetailView } from './view/author-detail/author-detail.view';
+import { AuthorFormView } from './view/author-form/author-form.view';
 
 const routes: Routes = [
-  { path: 'authors', component: AuthorsListComponent },
-  { path: 'authors/:id', component: AuthorDetailComponent },
-]
+    {
+      path: 'create',
+      component: AuthorFormView,
+    },
+    {
+      path: ':id',
+      children: [
+        {
+          path: '',
+          component: AuthorDetailView,
+        },
+        {
+          path: 'edit',
+          component: AuthorFormView,
+        },
+      ],
+    },
+    {
+      path: '',
+      component: AuthorsView,
+    },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class AuthorsRoutingModule { }

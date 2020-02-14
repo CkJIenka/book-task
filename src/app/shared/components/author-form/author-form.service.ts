@@ -4,28 +4,25 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IResponceList } from '../../interfaces/responce-list';
+import { IAuthors } from '../../../interfaces/authors';
+import { IResponceList } from '../../../interfaces/responce-list';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthorsListService {
+export class AuthorFormService {
+
 
   constructor(
     protected _http: HttpClient,
   ) { }
 
-  public getAuthors(page: number = 1): Observable<IResponceList> {
-    return this._http.get<IResponceList>(`authors?page=${page}`)
-      .pipe(
-        catchError(this.handleError<IResponceList>('getAuthors', {})),
-      );
-  }
+  public postAuthor(author: IAuthors): Observable<any> {
+    const body = { first_name: author.first_name, last_name: author.last_name };
 
-  public deleteAuthor(id: number): Observable<any> {
-    return this._http.delete(`authors/${id}`)
+    return this._http.post('authors', body)
       .pipe(
-        catchError(this.handleError<IResponceList>('deleteAuthor', {})),
+        catchError(this.handleError<IResponceList>('postAuthor', {})),
       );
   }
 

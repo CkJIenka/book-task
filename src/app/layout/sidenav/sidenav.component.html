@@ -1,0 +1,12 @@
+<mat-sidenav-container class="side-nav-container">
+  <mat-sidenav mode="side" opened class="side-nav-bar">
+    <h1>Books List</h1>
+    <mat-nav-list>
+      <a mat-list-item routerLink="books" routerLinkActive="active">Books</a>
+      <a mat-list-item routerLink="authors" routerLinkActive="active">Authors</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

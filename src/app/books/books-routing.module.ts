@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { BooksListComponent } from './components/books-list/books-list.component';
-import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { BooksView } from './view/books.view';
 
 const routes: Routes = [
-  { path: 'books', component: BooksListComponent },
-  { path: 'books/:id', component: BookDetailComponent },
-]
+  { path: '', component: BooksView },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class BooksRoutingModule { }
+export class BooksRoutingModule {
+}

@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { BooksModule } from './books/books.module';
-import { AuthorsModule } from './authors/authors.module';
 import { AppComponent } from './app.component';
 import { UrlInterceptor } from './interceptor/url-interceptor';
 import { AppRoutingModule } from './app-routing.module';
+import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from './layout/layout.module';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,10 @@ import { AppRoutingModule } from './app-routing.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    BooksModule,
-    AuthorsModule,
     AppRoutingModule,
+    SharedModule,
+    BrowserAnimationsModule,
+    LayoutModule,
   ],
   providers: [
     {

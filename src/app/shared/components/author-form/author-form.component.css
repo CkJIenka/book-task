@@ -1,14 +1,14 @@
-.container {
+form {
+  margin-top: 20px;
+  margin-left: 20px;
   width: 800px;
-  margin: 15px auto;
 }
 
-.container h3 {
-  color: #666666;
-  margin-top: 10px;
+fieldset {
+  border: none;
 }
 
-.container input {
+input {
   width: 800px;
   height: 20px;
   font-weight: bold;
@@ -19,32 +19,24 @@
   color: black;
 }
 
-p {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
 
-img {
-  max-width: 250px;
-  margin-bottom: 10px;
-}
 
-.change-author {
-  width: 100px;
-  height: 50px;
-  border: 1px solid #666;
+.submitButton {
+  width: 120px;
+  height: 30px;
   border-radius: 5px;
+  margin: 10px 350px;
+  border: 1px solid #666;
   outline: none;
-  margin: 10px auto;
   padding: 5px;
 }
 
-button:hover {
+.submitButton:hover {
   border: 1px #303030 solid;
   background-color: #fae884;
 }
 
-button:active {
+.submitButton:active {
   border: 1px #666 solid;
   background-color: white;
   opacity: 0.5;

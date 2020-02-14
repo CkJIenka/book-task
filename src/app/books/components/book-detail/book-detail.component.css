@@ -1,0 +1,37 @@
+img {
+  max-width: 100px;
+  float: left;
+  margin-right: 10px;
+}
+
+h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Lemonada, cursive;
+}
+
+p {
+  margin-bottom: 10px;
+  max-width: 600px;
+}
+
+button {
+  padding: 5px;
+  margin: 0 auto;
+  border: 1px solid #666;
+  border-radius: 5px;
+  outline: none;
+}
+
+button:hover {
+  border: 1px #303030 solid;
+  background-color: #fae884;
+}
+
+button:active {
+  border: 1px #666 solid;
+  background-color: white;
+  opacity: 0.5;
+}
+

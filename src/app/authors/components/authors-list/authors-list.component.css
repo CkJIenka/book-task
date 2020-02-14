@@ -1,11 +1,13 @@
 .container {
   width: 800px;
-  margin: 0 auto;
+  margin: 15px auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .container h3 {
   color: #666666;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .container input {
@@ -24,16 +26,24 @@
 }
 
 .container li {
-  margin-top: 5px;
+  margin-top: 10px;
+  list-style-type: none;
+}
+
+.container img {
+  max-width: 100px;
+  margin-right: 10px;
 }
 
 .container a {
   text-decoration: none;
   color: black;
+  position: relative;
+  top: -25px;
 }
 
 .container a:hover {
-  color: #666666;
+  color: #9e8b20;
 }
 
 form {
@@ -56,36 +66,38 @@ form span {
 .submitButton {
   width: 80px;
   height: 30px;
-  border-radius: 5px;
   margin: 10px 350px;
 }
 
-.submitButton:hover {
-  border: 1px #303030 solid;
-  background-color: #cdcdcd;
-}
-
-.submitButton:active {
-  border: 1px #666 solid;
-  background-color: white;
-  opacity: 0.5;
-}
-
 .deleteButton {
-  padding: 3px;
   float: right;
+  margin-top: 25px;
+}
+
+.add-author {
+  margin: 0 auto;
+  width: 100px;
+  height: 30px;
+}
+
+button{
   border: 1px solid #666;
   border-radius: 5px;
   outline: none;
+  padding: 5px;
 }
 
-.deleteButton:hover {
+button:hover {
   border: 1px #303030 solid;
-  background-color: #cdcdcd;
+  background-color: #fae884;
 }
 
-.deleteButton:active {
+button:active {
   border: 1px #666 solid;
   background-color: white;
   opacity: 0.5;
+}
+
+app-pagination {
+  align-self: center;
 }

@@ -1,0 +1,25 @@
+.side-nav-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}
+
+.side-nav-bar {
+  padding: 10px;
+  width: 20%;
+  background-color: #c6a8f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side-nav-bar h1 {
+  text-align: center;
+}
+
+.side-nav-bar .active {
+  color: #8a820c;
+}

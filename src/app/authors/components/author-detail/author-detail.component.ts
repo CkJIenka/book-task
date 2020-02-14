@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { Subject } from 'rxjs';
@@ -16,10 +15,11 @@ import { IAuthors } from '../../../interfaces/authors';
 export class AuthorDetailComponent implements OnInit, OnDestroy {
 
   public author = {
+    id: 0,
     first_name: '',
     last_name: '',
   };
-  public authorChangedForm: FormGroup;
+  public id = +this._route.snapshot.paramMap.get('id');
 
   private _destroy$: Subject<any> = new Subject<any>();
 
@@ -27,12 +27,10 @@ export class AuthorDetailComponent implements OnInit, OnDestroy {
   constructor(
     private _authorDetailService: AuthorDetailService,
     private _route: ActivatedRoute,
-    private _formBuilder: FormBuilder,
   ) { }
 
   public ngOnInit(): void {
     this._getAuthor();
-    this._initForm();
   }
 
   public ngOnDestroy(): void {
@@ -40,43 +38,24 @@ export class AuthorDetailComponent implements OnInit, OnDestroy {
     this._destroy$.complete();
   }
 
-  public onSubmit(author: IAuthors): object {
-    if (this.authorChangedForm.invalid) {
-      return;
-    }
-    const id = +this._route.snapshot.paramMap.get('id');
-
-    this._authorDetailService.changeAuthor(author, id)
+  public updateAuthorData(author: IAuthors): void {
+    this._authorDetailService.changeAuthor(author, this.id)
+      .pipe(
+        takeUntil(this._destroy$),
+      )
       .subscribe((response) => {
         this.author = response;
       });
   }
 
   private _getAuthor(): void {
-    const id = +this._route.snapshot.paramMap.get('id');
-
-    this._authorDetailService.getAuthor(id)
+    this._authorDetailService.getAuthor(this.id)
       .pipe(
         takeUntil(this._destroy$),
       )
       .subscribe((response) => {
         this.author = response;
-        this._getAuthor();
       });
-  }
-
-  get first_name(): any {
-    return this.authorChangedForm.get('first_name');
-  }
-  get last_name(): any {
-    return this.authorChangedForm.get('last_name');
-  }
-
-  private _initForm(): void {
-    this.authorChangedForm = this._formBuilder.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-    });
   }
 
 }

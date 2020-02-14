@@ -1,2 +1,11 @@
-<p>It work</p>
+<h2 mat-dialog-title>{{book.title}}</h2>
 
+<mat-dialog-content>
+  <img src="./assets/images/book.jpg">
+  <p>{{ book.description }}</p>
+  <p>{{ book.price | currency }}</p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="closeButton" (click)="closeBookDescription()">Close book description</button>
+</mat-dialog-actions>
