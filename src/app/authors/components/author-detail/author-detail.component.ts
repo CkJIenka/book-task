@@ -5,7 +5,6 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AuthorDetailService } from '../../services/author-detail.service';
-import { IAuthors } from '../../../interfaces/authors';
 
 @Component({
   selector: 'app-author-detail',
@@ -36,16 +35,6 @@ export class AuthorDetailComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
-  }
-
-  public updateAuthorData(author: IAuthors): void {
-    this._authorDetailService.changeAuthor(author, this.id)
-      .pipe(
-        takeUntil(this._destroy$),
-      )
-      .subscribe((response) => {
-        this.author = response;
-      });
   }
 
   private _getAuthor(): void {

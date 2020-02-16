@@ -8,7 +8,9 @@ import { AuthorsListComponent } from './components/authors-list/authors-list.com
 import { AuthorDetailComponent } from './components/author-detail/author-detail.component';
 import { AuthorsView } from './view/authors/authors.view';
 import { AuthorDetailView } from './view/author-detail/author-detail.view';
-import { AuthorFormView } from './view/author-form/author-form.view';
+import { AuthorFormCreateView } from './view/author-form-create/author-form-create.view';
+import { AuthorFormEditView } from './view/author-form-edit/author-form-edit.view';
+import { ToasterComponent } from './components/toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { AuthorFormView } from './view/author-form/author-form.view';
     AuthorDetailComponent,
     AuthorsView,
     AuthorDetailView,
-    AuthorFormView,
+    AuthorFormCreateView,
+    AuthorFormEditView,
+    ToasterComponent,
   ],
   imports: [
     CommonModule,
