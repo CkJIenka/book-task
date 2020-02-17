@@ -29,13 +29,14 @@ img {
   margin-bottom: 10px;
 }
 
-.change-author {
+.change-author,
+.add-new-book {
   width: 100px;
   height: 50px;
   border: 1px solid #666;
   border-radius: 5px;
   outline: none;
-  margin: 10px auto;
+  margin: 10px 20px 0 0;
   padding: 5px;
 }
 

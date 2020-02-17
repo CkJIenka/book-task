@@ -7,5 +7,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
+  <button routerLink="/books/{{book.id}}/edit" (click)="closeBookDescription()">Change book's information</button>
   <button class="closeButton" (click)="closeBookDescription()">Close book description</button>
 </mat-dialog-actions>

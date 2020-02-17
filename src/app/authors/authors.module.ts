@@ -10,6 +10,7 @@ import { AuthorsView } from './view/authors/authors.view';
 import { AuthorDetailView } from './view/author-detail/author-detail.view';
 import { AuthorFormCreateView } from './view/author-form-create/author-form-create.view';
 import { AuthorFormEditView } from './view/author-form-edit/author-form-edit.view';
+import { BookFormCreateView } from './view/book-form-create/book-form-create.view';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { AuthorFormEditView } from './view/author-form-edit/author-form-edit.vie
     AuthorDetailView,
     AuthorFormCreateView,
     AuthorFormEditView,
+    BookFormCreateView,
   ],
   imports: [
     CommonModule,
