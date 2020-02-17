@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IResponceList } from '../../interfaces/responce-list';
+import { IResponceList } from '../../shared/interfaces/responce-list';
 
 @Injectable({
   providedIn: 'root',

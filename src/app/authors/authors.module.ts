@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app/shared';
 
 import { AuthorsRoutingModule } from './authors-routing.module';
 import { AuthorsListComponent } from './components/authors-list/authors-list.component';
@@ -10,7 +10,6 @@ import { AuthorsView } from './view/authors/authors.view';
 import { AuthorDetailView } from './view/author-detail/author-detail.view';
 import { AuthorFormCreateView } from './view/author-form-create/author-form-create.view';
 import { AuthorFormEditView } from './view/author-form-edit/author-form-edit.view';
-import { ToasterComponent } from './components/toaster/toaster.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,6 @@ import { ToasterComponent } from './components/toaster/toaster.component';
     AuthorDetailView,
     AuthorFormCreateView,
     AuthorFormEditView,
-    ToasterComponent,
   ],
   imports: [
     CommonModule,

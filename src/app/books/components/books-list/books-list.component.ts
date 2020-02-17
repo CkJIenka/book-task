@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 
 import { BooksListService } from '../../services/books-list.service';
-import { IBook } from '../../../interfaces/books';
+import { IBook } from '../../../shared/interfaces/books';
 import { BookDetailComponent } from '../book-detail/book-detail.component';
 
 @Component({

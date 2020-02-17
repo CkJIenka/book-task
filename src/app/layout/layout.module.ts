@@ -6,6 +6,8 @@ import { MatListModule, MatSidenavModule } from '@angular/material';
 
 import { SidenavComponent } from './sidenav/sidenav.component';
 
+import { ToastrModule } from '@libs/toastr';
+
 @NgModule({
   declarations: [
     SidenavComponent,
@@ -15,6 +17,7 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     MatSidenavModule,
     RouterModule,
     MatListModule,
+    ToastrModule,
   ],
   exports: [
     SidenavComponent,

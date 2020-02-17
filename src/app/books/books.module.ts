@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { MatDialogModule } from '@angular/material';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '@app/shared';
 
 import { BooksListComponent } from './components/books-list/books-list.component';
 import { BooksRoutingModule } from './books-routing.module';

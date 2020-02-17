@@ -4,8 +4,10 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { IAuthors } from '../../../interfaces/authors';
+import { IAuthors } from '../../../shared/interfaces/authors';
 import { AuthorFormCreateService } from '../../services/author-form-create.service';
+
+import { ToastrService } from '@libs/toastr/services/toastr.service';
 
 @Component({
   templateUrl: './author-form-create.view.html',
@@ -13,12 +15,12 @@ import { AuthorFormCreateService } from '../../services/author-form-create.servi
 })
 export class AuthorFormCreateView implements OnInit, OnDestroy {
 
-  public success = false;
   private _destroy$: Subject<any> = new Subject<any>();
 
   constructor(
     private _authorFormCreateService: AuthorFormCreateService,
     private _location: Location,
+    private _toastrService: ToastrService,
   ) { }
 
   public ngOnInit(): void {
@@ -30,9 +32,8 @@ export class AuthorFormCreateView implements OnInit, OnDestroy {
           takeUntil(this._destroy$),
         )
       .subscribe();
-    this.success = true;
+    this._toastrService.open('Data was successfully added.');
     setTimeout(() => {
-      this.success = false;
       this.goBack();
     }, 2000);
   }

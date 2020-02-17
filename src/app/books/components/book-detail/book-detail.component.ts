@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 import { BooksListService } from '../../services/books-list.service';
-import { IBook } from '../../../interfaces/books';
+import { IBook } from '../../../shared/interfaces/books';
 
 @Component({
   selector: 'app-book-description',

@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { SharedModule } from '@app/shared';
+
 import { AppComponent } from './app.component';
 import { UrlInterceptor } from './interceptor/url-interceptor';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
 import { LayoutModule } from './layout/layout.module';
 
 @NgModule({

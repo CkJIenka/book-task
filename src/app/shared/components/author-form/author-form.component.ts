@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 
-import { IAuthors } from '../../../interfaces/authors';
+import { IAuthors } from '../../interfaces/authors';
 
 @Component({
   selector: 'app-author-form',

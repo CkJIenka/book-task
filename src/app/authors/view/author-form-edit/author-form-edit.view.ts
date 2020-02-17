@@ -5,8 +5,12 @@ import { Location } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { IAuthors } from '../../../interfaces/authors';
+import { IAuthors } from '@app/shared/interfaces/authors';
+
 import { AuthorFormEditService } from '../../services/author-form-edit.service';
+
+import { ToastrService } from '@libs/toastr/services/toastr.service';
+
 
 @Component({
   templateUrl: './author-form-edit.view.html',
@@ -15,7 +19,6 @@ import { AuthorFormEditService } from '../../services/author-form-edit.service';
 export class AuthorFormEditView implements OnInit {
 
   public currentAuthor: IAuthors;
-  public success = false;
   private _id = +this._route.snapshot.paramMap.get('id');
   private _destroy$: Subject<any> = new Subject<any>();
 
@@ -23,6 +26,7 @@ export class AuthorFormEditView implements OnInit {
     private _authorFormEditService: AuthorFormEditService,
     private _route: ActivatedRoute,
     private _location: Location,
+    private _toastrService: ToastrService,
   ) { }
 
   public ngOnInit(): void {
@@ -35,9 +39,8 @@ export class AuthorFormEditView implements OnInit {
         takeUntil(this._destroy$),
       )
       .subscribe();
-    this.success = true;
+    this._toastrService.open('Data was successfully changed.');
     setTimeout(() => {
-      this.success = false;
       this.goBack();
     }, 2000);
   }
