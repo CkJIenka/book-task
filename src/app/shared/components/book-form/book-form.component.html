@@ -13,5 +13,5 @@
   <span *ngIf="description.touched && description.invalid && description.errors.required">
       Book's description is required.
     </span>
-  <button type="submit" [disabled]="bookForm.invalid" class="submitButton">Submit book's info</button>
+  <button mat-stroked-button color="primary" type="submit" [disabled]="bookForm.invalid" class="submitButton">Submit book's info</button>
 </form>

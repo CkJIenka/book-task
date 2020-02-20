@@ -41,15 +41,11 @@
 
 .add-author {
   margin: 0 auto;
-  width: 100px;
-  height: 30px;
 }
 
-button{
-  border: 1px solid #666;
-  border-radius: 5px;
-  outline: none;
-  padding: 5px;
+.deleteButton:hover,
+.add-author:hover {
+  background-color: rgba(132, 111, 148, 0.6);
 }
 
 app-pagination {

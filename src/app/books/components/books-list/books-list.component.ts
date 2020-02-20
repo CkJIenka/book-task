@@ -44,7 +44,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
       });
   }
 
-  public filterBooks(page: number = 1, title: string = ''): void {
+  public filterBooks(page: number, title: string): void {
     this.getBooks(page, title);
   }
 

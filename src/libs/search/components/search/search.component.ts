@@ -1,23 +1,42 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component, Input, Output, EventEmitter, OnInit, OnDestroy, ViewChild, ElementRef
+} from '@angular/core';
+
+import { fromEvent, Subject } from 'rxjs';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
+
+  @ViewChild('search', { read: ElementRef, static: true })
+  public search: ElementRef;
+
+  @Input()
+  public debounce: number;
 
   @Output()
   public readonly searchValue = new EventEmitter<string>();
 
-  public searchSign: string;
+  private _destroy$ = new Subject<void>();
 
   constructor() {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    fromEvent(this.search.nativeElement, 'keyup')
+      .pipe(
+        debounceTime(this.debounce),
+        takeUntil(this._destroy$),
+      )
+      .subscribe(() => this.searchValue.emit(this.search.nativeElement.value));
+  }
 
-  public searchResult(title: string): void {
-    this.searchValue.emit(title);
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
 }

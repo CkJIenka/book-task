@@ -29,24 +29,7 @@ img {
   margin-bottom: 10px;
 }
 
-.change-author,
-.add-new-book {
-  width: 100px;
-  height: 50px;
-  border: 1px solid #666;
-  border-radius: 5px;
-  outline: none;
-  margin: 10px 20px 0 0;
-  padding: 5px;
-}
-
-button:hover {
-  border: 1px #303030 solid;
-  background-color: #fae884;
-}
-
-button:active {
-  border: 1px #666 solid;
-  background-color: white;
-  opacity: 0.5;
+.change-author:hover,
+.add-new-book:hover {
+    background-color: rgba(132, 111, 148, 0.6);
 }

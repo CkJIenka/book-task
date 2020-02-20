@@ -3,26 +3,10 @@ div {
   margin-top: 10px;
 }
 
-button {
-  width: 30px;
-  height: 30px;
-  margin: 10px 5px;
-  padding: 5px;
-  border: 1px #666 solid;
-  outline: none;
-  border-radius: 5px;
-}
-
 button:hover {
-  border: 1px #303030 solid;
-  background-color: #fae884;
-}
-button:active {
-  border: 1px #666 solid;
-  background-color: white;
-  opacity: 0.5;
+  background-color: rgba(132, 111, 148, 0.6);
 }
 
 .activeButton {
-  background-color: #e8ce41;
+  background-color: rgba(176, 153, 194, 0.6);
 }

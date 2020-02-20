@@ -13,5 +13,5 @@
   <span *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">
       Last-name is required.
     </span>
-  <button type="submit" [disabled]="authorForm.invalid" class="submitButton">Submit author's data</button>
+  <button mat-stroked-button color="primary" type="submit" [disabled]="authorForm.invalid" class="submitButton">Submit author's data</button>
 </form>

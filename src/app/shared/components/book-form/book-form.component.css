@@ -13,23 +13,10 @@ span {
   font-size: 80%;
 }
 
-.submitButton {
-  width: 120px;
-  height: 30px;
-  border-radius: 5px;
-  margin: 10px 350px;
-  border: 1px solid #666;
-  outline: none;
-  padding: 5px;
+button {
+  margin: 0 350px;
 }
 
-.submitButton:hover {
-  border: 1px #303030 solid;
-  background-color: #fae884;
-}
-
-.submitButton:active {
-  border: 1px #666 solid;
-  background-color: white;
-  opacity: 0.5;
+button:hover {
+  background-color: rgba(132, 111, 148, 0.6);
 }

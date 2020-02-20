@@ -3,15 +3,15 @@
 <div class="container">
 
   <h3>List of all authors:</h3>
+  <button mat-stroked-button color="primary" class="add-author" routerLink="create">Add new author</button>
   <ul>
     <li *ngFor="let author of authors ">
       <img src="../assets/images/author.jpg">
       <a routerLink="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</a>
-      <button class="deleteButton" (click)="deleteAuthor(author.id)">Delete author</button>
+      <button mat-stroked-button color="primary" class="deleteButton" (click)="deleteAuthor(author.id)">Delete author</button>
     </li>
   </ul>
 
-  <button class="add-author" routerLink="create">Add new author</button>
   <app-pagination [receivedMeta]="requestMeta" (selectPage)="getAuthors($event, title)"></app-pagination>
 
 </div>
