@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs';
 
-import { ToastrService } from '../../services/toastr.service';
+import { ToastrService} from '@libs/toastr/services/toastr.service';
 
 @Component({
   selector: 'app-toaster',

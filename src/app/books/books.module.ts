@@ -11,6 +11,8 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { BooksView } from './view/books/books.view';
 import { BookFormEditView } from './view/book-form-edit/book-form-edit.view';
 
+import { SearchModule } from '@libs/search';
+
 @NgModule({
   declarations: [
     BooksListComponent,
@@ -23,6 +25,7 @@ import { BookFormEditView } from './view/book-form-edit/book-form-edit.view';
     BooksRoutingModule,
     SharedModule,
     MatDialogModule,
+    SearchModule,
   ],
   exports: [
   ],

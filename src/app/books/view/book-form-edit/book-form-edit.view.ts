@@ -19,7 +19,7 @@ export class BookFormEditView implements OnInit {
 
   public currentBook: IBook;
   private _id = +this._route.snapshot.paramMap.get('id');
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _bookFormEditService: BookFormEditService,
@@ -28,7 +28,9 @@ export class BookFormEditView implements OnInit {
     private _toastrService: ToastrService,
   ) { }
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    // this._getBook();
+  }
 
   public bookEdit(book: IBook): void {
     this._bookFormEditService.changeBook(book, this._id)
@@ -44,6 +46,16 @@ export class BookFormEditView implements OnInit {
 
   public goBack(): void {
     this._location.back();
+  }
+
+  private _getBook(): void {
+    this._bookFormEditService.getBook(this._id)
+      .pipe(
+        takeUntil(this._destroy$),
+      )
+      .subscribe((response) => {
+        this.currentBook = response;
+      });
   }
 
 }

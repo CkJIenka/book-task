@@ -3,8 +3,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AuthorsListService } from '../../services/authors-list.service';
-import { IAuthors } from '../../../shared/interfaces/authors';
+import { IAuthors } from '@app/shared/interfaces/authors';
+import { AuthorsListService } from '@app/authors/services/authors-list.service';
+import { IMeta } from '@app/shared/interfaces/meta';
 
 @Component({
   selector: 'app-authors-list',
@@ -13,9 +14,9 @@ import { IAuthors } from '../../../shared/interfaces/authors';
 })
 export class AuthorsListComponent implements OnInit, OnDestroy {
 
-  public requestMeta: number;
+  public requestMeta: IMeta;
   public authors: IAuthors[];
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _authorsListService: AuthorsListService,
@@ -25,14 +26,14 @@ export class AuthorsListComponent implements OnInit, OnDestroy {
     this.getAuthors();
   }
 
-  public getAuthors(page: number = 1): void {
-    this._authorsListService.getAuthors(page)
+  public getAuthors(page: number = 1, title: string = ''): void {
+    this._authorsListService.getAuthors(page, title)
       .pipe(
         takeUntil(this._destroy$),
       )
       .subscribe((response) => {
         this.authors = response.authors;
-        this.requestMeta = response.meta.pages;
+        this.requestMeta = response.meta;
       });
   }
 

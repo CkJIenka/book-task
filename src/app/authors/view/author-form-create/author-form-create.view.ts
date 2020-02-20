@@ -4,8 +4,8 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { IAuthors } from '../../../shared/interfaces/authors';
-import { AuthorFormCreateService } from '../../services/author-form-create.service';
+import { IAuthors } from '@app/shared/interfaces/authors';
+import { AuthorFormCreateService } from '@app/authors/services/author-form-create.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
 
@@ -15,7 +15,7 @@ import { ToastrService } from '@libs/toastr/services/toastr.service';
 })
 export class AuthorFormCreateView implements OnInit, OnDestroy {
 
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _authorFormCreateService: AuthorFormCreateService,

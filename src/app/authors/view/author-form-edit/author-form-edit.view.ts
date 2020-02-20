@@ -6,8 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { IAuthors } from '@app/shared/interfaces/authors';
-
-import { AuthorFormEditService } from '../../services/author-form-edit.service';
+import { AuthorFormEditService } from '@app/authors/services/author-form-edit.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
 
@@ -20,7 +19,7 @@ export class AuthorFormEditView implements OnInit {
 
   public currentAuthor: IAuthors;
   private _id = +this._route.snapshot.paramMap.get('id');
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _authorFormEditService: AuthorFormEditService,

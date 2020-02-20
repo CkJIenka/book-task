@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AuthorDetailService } from '../../services/author-detail.service';
+import { AuthorDetailService } from '@app/authors/services/author-detail.service';
 
 @Component({
   selector: 'app-author-detail',
@@ -20,7 +20,7 @@ export class AuthorDetailComponent implements OnInit, OnDestroy {
   };
   public id = +this._route.snapshot.paramMap.get('id');
 
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
 
   constructor(

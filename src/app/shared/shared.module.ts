@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { MatInputModule } from '@angular/material';
+
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { AuthorFormComponent } from './components/author-form/author-form.component';
 import { BookFormComponent } from './components/book-form/book-form.component';
@@ -15,6 +17,7 @@ import { BookFormComponent } from './components/book-form/book-form.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    MatInputModule,
   ],
   exports: [
     PaginationComponent,

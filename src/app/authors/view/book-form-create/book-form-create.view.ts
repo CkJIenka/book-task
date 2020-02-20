@@ -16,7 +16,7 @@ import { ToastrService } from '@libs/toastr/services/toastr.service';
 })
 export class BookFormCreateView implements OnInit, OnDestroy {
 
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
   private _id = +this._route.snapshot.paramMap.get('id');
 
   constructor(

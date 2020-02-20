@@ -1,6 +1,7 @@
+<app-search debounce="1000" (searchValue)="getAuthors(1, $event)"></app-search>
+
 <div class="container">
 
-  <input type="text" placeholder="search">
   <h3>List of all authors:</h3>
   <ul>
     <li *ngFor="let author of authors ">
@@ -11,6 +12,6 @@
   </ul>
 
   <button class="add-author" routerLink="create">Add new author</button>
-  <app-pagination [receivedMeta]="requestMeta" (selectPage)="getAuthors($event)"></app-pagination>
+  <app-pagination [receivedMeta]="requestMeta" (selectPage)="getAuthors($event, title)"></app-pagination>
 
 </div>

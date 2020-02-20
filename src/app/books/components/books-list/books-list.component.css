@@ -12,18 +12,6 @@
   margin: auto 0;
 }
 
-input {
-  width: 800px;
-  height: 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: slategrey 1px solid;
-  outline: none;
-  padding: 5px;
-  color: black;
-  margin-left: 12px;
-}
-
 .container div {
   margin: 10px;
   display: flex;

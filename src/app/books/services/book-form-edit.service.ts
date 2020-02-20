@@ -23,6 +23,13 @@ export class BookFormEditService {
       );
   }
 
+  public getBook(id: number): Observable<IBook> {
+    return this._http.get<IBook>(`books/${id}`)
+      .pipe(
+        catchError(this.handleError<any>('getBook', {})),
+      );
+  }
+
   protected handleError<T>(operation: string = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);

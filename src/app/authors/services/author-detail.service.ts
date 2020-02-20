@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IAuthors } from '../../shared/interfaces/authors';
+import { IAuthors } from '@app/shared/interfaces/authors';
 
 @Injectable({
   providedIn: 'root',

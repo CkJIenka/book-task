@@ -1,17 +1,15 @@
 <form [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm.value)">
-  <fieldset>
-    <label for="first_name">Enter author's first-name:
-      <input id="first_name" type="text" formControlName="first_name">
-    </label>
-  </fieldset>
+  <mat-form-field>
+    <mat-label>Enter author's first-name:</mat-label>
+    <input matInput id="first_name" name="first_name" type="text" formControlName="first_name">
+  </mat-form-field>
   <span *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">
       First-name is required.
     </span>
-  <fieldset>
-    <label for="last_name">Enter author's last-name:
-      <input id="last_name" type="text" formControlName="last_name">
-    </label>
-  </fieldset>
+  <mat-form-field>
+    <mat-label>Enter author's last-name:</mat-label>
+      <input matInput id="last_name" name="last_name" type="text" formControlName="last_name">
+  </mat-form-field>
   <span *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">
       Last-name is required.
     </span>

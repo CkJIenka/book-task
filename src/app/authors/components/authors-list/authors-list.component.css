@@ -10,21 +10,9 @@
   margin-top: 20px;
 }
 
-.container input {
-  width: 800px;
-  height: 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: slategrey 1px solid;
-  outline: none;
-  padding: 5px;
-  color: black;
-}
-
 .container ul {
   margin-top: 20px;
 }
-
 .container li {
   margin-top: 10px;
   list-style-type: none;
@@ -46,29 +34,6 @@
   color: #9e8b20;
 }
 
-form {
-  margin-top: 10px;
-}
-
-fieldset {
-  border: none;
-}
-
-input.ng-touched.ng-invalid{
-  border-color: red;
-}
-
-form span {
-  color: red;
-  font-size: smaller;
-}
-
-.submitButton {
-  width: 80px;
-  height: 30px;
-  margin: 10px 350px;
-}
-
 .deleteButton {
   float: right;
   margin-top: 25px;
@@ -85,17 +50,6 @@ button{
   border-radius: 5px;
   outline: none;
   padding: 5px;
-}
-
-button:hover {
-  border: 1px #303030 solid;
-  background-color: #fae884;
-}
-
-button:active {
-  border: 1px #666 solid;
-  background-color: white;
-  opacity: 0.5;
 }
 
 app-pagination {

@@ -4,19 +4,13 @@ form {
   width: 800px;
 }
 
-fieldset {
-  border: none;
+mat-form-field {
+  width: 800px;
 }
 
-input {
-  width: 800px;
-  height: 20px;
-  font-weight: bold;
-  border-radius: 5px;
-  border: slategrey 1px solid;
-  outline: none;
-  padding: 5px;
-  color: black;
+span {
+  color: red;
+  font-size: 80%;
 }
 
 .submitButton {

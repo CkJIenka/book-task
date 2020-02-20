@@ -1,17 +1,15 @@
 <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
-  <fieldset>
-    <label for="title">Enter book's title:
-      <input id="title" type="text" formControlName="title">
-    </label>
-  </fieldset>
+  <mat-form-field>
+    <mat-label>Enter book's title:</mat-label>
+    <input matInput id="title" name="title" type="text" formControlName="title">
+  </mat-form-field>
   <span *ngIf="title.touched && title.invalid && title.errors.required">
       Book's title is required.
     </span>
-  <fieldset>
-    <label for="description">Enter book's description:
-      <input id="description" type="text" formControlName="description">
-    </label>
-  </fieldset>
+  <mat-form-field>
+    <mat-label>Enter book's description:</mat-label>
+      <textarea matInput id="description" name="description" type="text" formControlName="description"></textarea>
+  </mat-form-field>
   <span *ngIf="description.touched && description.invalid && description.errors.required">
       Book's description is required.
     </span>

@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 
-import { IBook } from '../../interfaces/books';
+import { IBook } from '@app/shared/interfaces/books';
 
 @Component({
   selector: 'app-book-form',
@@ -21,7 +21,7 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
   public readonly bookSubmitted = new EventEmitter<object>();
 
   public bookForm: FormGroup;
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _formBuilder: FormBuilder,

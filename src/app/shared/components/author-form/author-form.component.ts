@@ -5,7 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 
-import { IAuthors } from '../../interfaces/authors';
+import { IAuthors } from '@app/shared/interfaces/authors';
 
 @Component({
   selector: 'app-author-form',
@@ -21,7 +21,7 @@ export class AuthorFormComponent implements OnInit, OnDestroy, OnChanges {
   public readonly authorSubmitted = new EventEmitter<object>();
 
   public authorForm: FormGroup;
-  private _destroy$: Subject<any> = new Subject<any>();
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _formBuilder: FormBuilder,

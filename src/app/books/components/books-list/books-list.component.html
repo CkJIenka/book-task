@@ -1,8 +1,8 @@
+<app-search debounce="1000" (searchValue)="filterBooks(1, $event)"></app-search>
+
 <div class="container">
 
-  <input type="text" placeholder="search">
-
-  <div *ngFor="let book of books ">
+  <div *ngFor="let book of books">
     <img class="book-promo" src="../assets/images/book.jpg" alt="book-promo">
     <div  class="book-description">
       <p class="book-title">{{ book.title }}</p>
@@ -12,6 +12,6 @@
     </div>
   </div>
 
-  <app-pagination [receivedMeta]="requestMeta" (selectPage)="getBooks($event)"></app-pagination>
+  <app-pagination [receivedMeta]="requestMeta" (selectPage)="getBooks($event, title)"></app-pagination>
 </div>
 

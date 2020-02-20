@@ -5,8 +5,10 @@ import { takeUntil } from 'rxjs/operators';
 
 import { MatDialog } from '@angular/material';
 
-import { BooksListService } from '../../services/books-list.service';
-import { IBook } from '../../../shared/interfaces/books';
+import { BooksListService } from '@app/books/services/books-list.service';
+import { IBook } from '@app/shared/interfaces/books';
+import { IMeta } from '@app/shared/interfaces/meta';
+
 import { BookDetailComponent } from '../book-detail/book-detail.component';
 
 @Component({
@@ -16,9 +18,10 @@ import { BookDetailComponent } from '../book-detail/book-detail.component';
 })
 export class BooksListComponent implements OnInit, OnDestroy {
 
-  public requestMeta: number;
+  public requestMeta: IMeta;
   public books: IBook[];
-  private _destroy$: Subject<any> = new Subject<any>();
+  public title: string;
+  private _destroy$ = new Subject<void>();
 
   constructor(
     private _bookListService: BooksListService,
@@ -29,15 +32,20 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.getBooks();
   }
 
-  public getBooks(page: number = 1): void {
-    this._bookListService.getBooks(page)
+  public getBooks(page: number = 1, title: string = ''): void {
+    this.title = title;
+    this._bookListService.getBooks(page, title)
       .pipe(
         takeUntil(this._destroy$),
       )
       .subscribe((response) => {
         this.books = response.books;
-        this.requestMeta = response.meta.pages;
+        this.requestMeta = response.meta;
       });
+  }
+
+  public filterBooks(page: number = 1, title: string = ''): void {
+    this.getBooks(page, title);
   }
 
   public ngOnDestroy(): void {

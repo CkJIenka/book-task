@@ -12,6 +12,8 @@ import { AuthorFormCreateView } from './view/author-form-create/author-form-crea
 import { AuthorFormEditView } from './view/author-form-edit/author-form-edit.view';
 import { BookFormCreateView } from './view/book-form-create/book-form-create.view';
 
+import { SearchModule } from '@libs/search';
+
 @NgModule({
   declarations: [
     AuthorsListComponent,
@@ -26,6 +28,7 @@ import { BookFormCreateView } from './view/book-form-create/book-form-create.vie
     CommonModule,
     AuthorsRoutingModule,
     SharedModule,
+    SearchModule,
   ],
 })
 export class AuthorsModule { }
