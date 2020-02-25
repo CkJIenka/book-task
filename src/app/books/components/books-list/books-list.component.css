@@ -34,10 +34,6 @@
   color: #9c9a3d;
 }
 
-.book-description a:hover {
-  color: #9e8b20;
-  cursor: pointer;
-}
 
 .book-title {
   font-weight: bold;

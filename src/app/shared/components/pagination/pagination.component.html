@@ -1,7 +1,18 @@
-<button mat-stroked-button color="primary" (click)="goFirst(1)"><<</button>
-<button mat-stroked-button color="primary" (click)="previousPage()"><</button>
+<button mat-stroked-button color="primary"
+        (click)="goFirst(1)" routerLink="/books"  [queryParams]="{page: 1}"
+><<</button>
+<button mat-stroked-button color="primary"
+        routerLink="/books"  [queryParams]="{page: currentPageNumber-1}"
+        (click)="previousPage()"><</button>
 <div *ngFor="let page of pagesAmount">
-  <button mat-stroked-button color="primary" (click)="selectPageNumber(page)" [ngClass]="page === currentPageNumber ? {activeButton: activedButton} : ''">{{ page }}</button>
+  <button mat-stroked-button color="primary" (click)="selectPageNumber(page)"
+          routerLink="/books"  [queryParams]="{page: page}"
+          [ngClass]="page === currentPageNumber ? {activeButton: activedButton} : ''">{{ page }}
+  </button>
 </div>
-<button mat-stroked-button color="primary" (click)="nextPage()">></button>
-<button mat-stroked-button color="primary" (click)="goLast(receivedPagesData)">>></button>
+<button mat-stroked-button color="primary"
+        routerLink="/books"  [queryParams]="{page: currentPageNumber+1}"
+        (click)="nextPage()">></button>
+<button mat-stroked-button color="primary"
+        routerLink="/books"  [queryParams]="{page: receivedPagesData}"
+        (click)="goLast(receivedPagesData)">>></button>
