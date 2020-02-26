@@ -1,17 +1,20 @@
-<form [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm.value)">
-  <mat-form-field>
-    <mat-label>Enter author's first-name:</mat-label>
-    <input matInput id="first_name" name="first_name" type="text" formControlName="first_name">
-  </mat-form-field>
-  <span *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">
-      First-name is required.
-    </span>
-  <mat-form-field>
-    <mat-label>Enter author's last-name:</mat-label>
-      <input matInput id="last_name" name="last_name" type="text" formControlName="last_name">
-  </mat-form-field>
-  <span *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">
-      Last-name is required.
-    </span>
-  <button mat-stroked-button color="primary" type="submit" [disabled]="authorForm.invalid" class="submitButton">Submit author's data</button>
-</form>
+<mat-card>
+
+<mat-card-title>Reactive Form</mat-card-title>
+
+  <app-author-form-reactive
+    [authorReactive]="authorData" (authorReactiveSubmitted)="addAuthorData($event)">
+
+  </app-author-form-reactive>
+
+</mat-card>
+
+<mat-card>
+
+<mat-card-title>Template-driven Form</mat-card-title>
+
+  <app-author-form-template
+    [authorTemplate]="authorData" (authorTemplateSubmitted)="addAuthorData($event)">
+  </app-author-form-template>
+
+</mat-card>

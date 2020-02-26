@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { IAuthors } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors';
 import { AuthorsListService } from '@app/authors/services/authors-list.service';
 import { IMeta } from '@app/shared/interfaces/meta';
 
@@ -15,7 +15,7 @@ import { IMeta } from '@app/shared/interfaces/meta';
 export class AuthorsListComponent implements OnInit, OnDestroy {
 
   public requestMeta: IMeta;
-  public authors: IAuthors[];
+  public authors: IAuthor[];
   private _destroy$ = new Subject<void>();
 
   constructor(

@@ -1,9 +1,9 @@
 import { IBook } from './books';
 import { IMeta } from './meta';
-import { IAuthors } from './authors';
+import { IAuthor } from './authors';
 
 export interface IResponceList {
   books?: IBook[];
-  authors?: IAuthors[];
+  authors?: IAuthor[];
   meta?: IMeta;
 }

@@ -22,6 +22,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   public requestMeta: IMeta;
   public books: IBook[];
   public title: string;
+  public messageError: string;
   private _destroy$ = new Subject<void>();
 
   constructor(
@@ -29,7 +30,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
     private _dialog: MatDialog,
     private _route: ActivatedRoute,
     private _router: Router,
-) { }
+  ) { }
 
   public ngOnInit(): void {
     const currentPage = +this._route.snapshot.queryParamMap.get('page');
@@ -45,6 +46,9 @@ export class BooksListComponent implements OnInit, OnDestroy {
       .subscribe((response) => {
         this.books = response.books;
         this.requestMeta = response.meta;
+        if (response.meta.records === 0) {
+          this.messageError = 'No search results found.';
+        }
       });
   }
 

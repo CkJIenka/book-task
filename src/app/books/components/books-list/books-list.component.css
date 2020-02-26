@@ -34,9 +34,17 @@
   color: #9c9a3d;
 }
 
+.book-description a:hover {
+  cursor: pointer;
+  color: #8a820c;
+}
 
 .book-title {
   font-weight: bold;
   font-size: 20px;
   font-family: Lemonada, cursive;
+}
+
+.resultMessage {
+  margin-bottom: 20px;
 }

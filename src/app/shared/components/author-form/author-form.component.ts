@@ -1,72 +1,39 @@
 import {
-  Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges, SimpleChanges,
+  Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges,
 } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { Subject } from 'rxjs';
-
-import { IAuthors } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors';
 
 @Component({
   selector: 'app-author-form',
   templateUrl: './author-form.component.html',
   styleUrls: ['./author-form.component.css'],
 })
-export class AuthorFormComponent implements OnInit, OnDestroy, OnChanges {
+export class AuthorFormComponent implements OnInit, OnChanges {
 
   @Input()
-  public author: IAuthors;
+  public author: IAuthor;
 
   @Output()
   public readonly authorSubmitted = new EventEmitter<object>();
 
-  public authorForm: FormGroup;
-  private _destroy$ = new Subject<void>();
+  public authorData: IAuthor;
 
-  constructor(
-    private _formBuilder: FormBuilder,
-  ) { }
+  constructor() {}
 
-  get firstName(): any {
-    return this.authorForm.get('first_name');
-  }
-  get lastName(): any {
-    return this.authorForm.get('last_name');
-  }
-
-  public ngOnInit(): void {
-    this._initForm();
-  }
+  public ngOnInit(): void {}
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.author.currentValue !== changes.author.previousValue) {
-      this._setInputValue(changes.author.currentValue);
+    if (
+      changes.author.currentValue !== null &&
+      changes.author.currentValue !== changes.author.previousValue
+    ) {
+      this.authorData = changes.author.currentValue;
     }
   }
 
-  public onSubmit(author: IAuthors): void {
-    if (this.authorForm.invalid) {
-      return;
-    }
+  public addAuthorData(author: IAuthor): void {
     this.authorSubmitted.emit(author);
-    this.authorForm.reset();
-  }
-
-  public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
-  }
-
-  private _initForm(): void {
-    this.authorForm = this._formBuilder.group({
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-    });
-  }
-
-  private _setInputValue(author: IAuthors): void {
-    this.firstName.patchValue(author.first_name);
-    this.lastName.patchValue(author.last_name);
   }
 
 }

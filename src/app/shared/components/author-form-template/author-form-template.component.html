@@ -1,0 +1,38 @@
+<form #authorFormTemplate="ngForm" (ngSubmit)="onSubmitTemplate(authorFormTemplate)" *ngIf="authorTemplate">
+
+  <!-- FIRST NAME -->
+  <mat-form-field>
+    <mat-label>Enter author's first-name:</mat-label>
+    <input matInput type="text"
+           [(ngModel)]="authorTemplate.first_name" name="first_name"
+           #firstNameTemp="ngModel" required pattern="[A-Za-z-\s]*$">
+    <mat-error *ngIf="firstNameTemp.touched && firstNameTemp.invalid && firstNameTemp.errors.required">
+      First-name is required.
+    </mat-error>
+    <mat-error *ngIf="firstNameTemp.touched && firstNameTemp.invalid && firstNameTemp.errors.pattern">
+      First-name must contain only letters or space and dash characters.
+    </mat-error>
+  </mat-form-field>
+
+  <!-- LAST NAME -->
+  <mat-form-field>
+    <mat-label>Enter author's last-name:</mat-label>
+    <input matInput type="text"
+           [(ngModel)]="authorTemplate.last_name" name="last_name"
+           #lastNameTemp="ngModel" required pattern="[A-Za-z-\s]*$"
+           [disabled]="!firstNameTemp.value">
+    <mat-error *ngIf="lastNameTemp.touched && lastNameTemp.invalid && lastNameTemp.errors.required">
+      Last-name is required.
+    </mat-error>
+    <mat-error *ngIf="lastNameTemp.touched && lastNameTemp.invalid && lastNameTemp.errors.pattern">
+      Last-name must contain only letters or space and dash characters.
+    </mat-error>
+  </mat-form-field>
+
+  <div class="buttonController">
+    <button mat-stroked-button color="primary" type="submit" [disabled]="authorFormTemplate.invalid" class="formButton">Submit</button>
+    <button mat-stroked-button color="primary" class="formButton" (click)="resetTemplateForm(authorFormTemplate); false">Reset</button>
+    <button mat-stroked-button color="primary" class="formButton" (click)="clearTemplateForm(authorFormTemplate)">Clear</button>
+  </div>
+
+</form>

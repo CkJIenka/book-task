@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { IAuthors } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors';
 import { AuthorFormEditService } from '@app/authors/services/author-form-edit.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
@@ -17,7 +17,7 @@ import { ToastrService } from '@libs/toastr/services/toastr.service';
 })
 export class AuthorFormEditView implements OnInit {
 
-  public currentAuthor: IAuthors;
+  public currentAuthor: IAuthor;
   private _id = +this._route.snapshot.paramMap.get('id');
   private _destroy$ = new Subject<void>();
 
@@ -32,7 +32,7 @@ export class AuthorFormEditView implements OnInit {
     this._getAuthor();
   }
 
-  public authorEdit(author: IAuthors): void {
+  public authorEdit(author: IAuthor): void {
     this._authorFormEditService.changeAuthor(author, this._id)
       .pipe(
         takeUntil(this._destroy$),

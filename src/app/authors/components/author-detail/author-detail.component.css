@@ -32,4 +32,5 @@ img {
 .change-author:hover,
 .add-new-book:hover {
     background-color: rgba(132, 111, 148, 0.6);
+  cursor: pointer;
 }

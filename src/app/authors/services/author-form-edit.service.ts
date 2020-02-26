@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IAuthors } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors';
 import { IResponceList } from '@app/shared/interfaces/responce-list';
 
 @Injectable({
@@ -16,15 +16,15 @@ export class AuthorFormEditService {
     protected _http: HttpClient,
   ) { }
 
-  public changeAuthor(author: IAuthors, id: number): Observable<any> {
+  public changeAuthor(author: IAuthor, id: number): Observable<any> {
     return this._http.put(`authors/${id}`, author)
       .pipe(
         catchError(this.handleError<IResponceList>('changeAuthor', {})),
       );
   }
 
-  public getAuthor(id: number): Observable<IAuthors> {
-    return this._http.get<IAuthors>(`authors/${id}`)
+  public getAuthor(id: number): Observable<IAuthor> {
+    return this._http.get<IAuthor>(`authors/${id}`)
       .pipe(
         catchError(this.handleError<any>('getAuthor', {})),
       );

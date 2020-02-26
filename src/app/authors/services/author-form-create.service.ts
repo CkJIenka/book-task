@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IAuthors } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors';
 import { IResponceList } from '@app/shared/interfaces/responce-list';
 
 @Injectable({
@@ -17,7 +17,7 @@ export class AuthorFormCreateService {
     protected _http: HttpClient,
   ) { }
 
-  public postAuthor(author: IAuthors): Observable<any> {
+  public postAuthor(author: IAuthor): Observable<any> {
     return this._http.post('authors', author)
       .pipe(
         catchError(this.handleError<IResponceList>('postAuthor', {})),

@@ -8,15 +8,11 @@ mat-form-field {
   width: 800px;
 }
 
-span {
-  color: red;
-  font-size: 80%;
-}
-
 button {
   margin: 0 350px;
 }
 
 button:hover {
   background-color: rgba(132, 111, 148, 0.6);
+  cursor: pointer;
 }
