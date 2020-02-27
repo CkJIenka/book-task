@@ -6,6 +6,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 
 import { IBook } from '@app/shared/interfaces/books';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'app-book-form',
@@ -36,6 +37,19 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
 
   public ngOnInit(): void {
     this._initForm();
+    if (this.bookForm) {
+      this.bookForm.get('title').valueChanges
+        .pipe(
+          takeUntil(this._destroy$),
+        )
+        .subscribe((val) => {
+          if (val) {
+            this.bookForm.get('description').enable();
+          } else {
+            this.bookForm.get('description').disable();
+          }
+        });
+    }
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -57,10 +71,20 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
     this._destroy$.complete();
   }
 
+  public clearBookForm(): void {
+    this.bookForm.reset();
+  }
+
   private _initForm(): void {
     this.bookForm = this._formBuilder.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
+      title: [
+        '',
+        Validators.required,
+      ],
+      description: [
+        { value: '', disabled: true },
+        Validators.required,
+      ],
     });
   }
 

@@ -1,17 +1,30 @@
-<form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
-  <mat-form-field>
-    <mat-label>Enter book's title:</mat-label>
-    <input matInput id="title" name="title" type="text" formControlName="title">
-    <mat-error *ngIf="title.touched && title.invalid && title.errors.required">
-      Book's title is required.
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Enter book's description:</mat-label>
-    <textarea matInput id="description" name="description" type="text" formControlName="description"></textarea>
-    <mat-error *ngIf="description.touched && description.invalid && description.errors.required">
-      Book's description is required.
-    </mat-error>
-  </mat-form-field>
-  <button mat-stroked-button color="primary" type="submit" [disabled]="bookForm.invalid" class="submitButton">Submit book's info</button>
-</form>
+<mat-card>
+
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+
+<!-- BOOK'S TITLE -->
+    <mat-form-field>
+      <mat-label>Enter book's title:</mat-label>
+      <input matInput id="title" name="title" type="text" formControlName="title">
+      <mat-error *ngIf="title.touched && title.invalid && title.errors.required">
+        Book's title is required.
+      </mat-error>
+    </mat-form-field>
+
+<!--  BOOK'S DESCRIPTION-->
+    <mat-form-field>
+      <mat-label>Enter book's description:</mat-label>
+      <textarea matInput id="description" name="description" type="text" formControlName="description"></textarea>
+      <mat-error *ngIf="description.touched && description.invalid && description.errors.required">
+        Book's description is required.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="buttonController">
+      <button mat-stroked-button color="primary" type="submit" [disabled]="bookForm.invalid" class="button">Submit</button>
+      <button mat-stroked-button color="primary" class="button" (click)="clearBookForm()">Clear</button>
+    </div>
+
+  </form>
+
+</mat-card>

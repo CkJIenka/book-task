@@ -12,11 +12,7 @@ import { IAuthor } from '@app/shared/interfaces/authors';
 export class AuthorFormTemplateComponent implements OnInit, OnChanges {
 
   @Input()
-  public authorTemplate: IAuthor = {
-    id: null,
-    first_name: '',
-    last_name: '',
-  };
+  public authorTemplate: IAuthor;
 
   @Output()
   public readonly authorTemplateSubmitted = new EventEmitter<object>();
@@ -26,6 +22,11 @@ export class AuthorFormTemplateComponent implements OnInit, OnChanges {
   constructor() { }
 
   public ngOnInit(): void {
+    this.authorTemplate = {
+      id: null,
+      first_name: '',
+      last_name: '',
+    };
   }
 
   public ngOnChanges(changes: SimpleChanges): void {

@@ -8,11 +8,19 @@ mat-form-field {
   width: 800px;
 }
 
-button {
-  margin: 0 350px;
+.button {
+  margin: 0 5px;
 }
 
-button:hover {
+.button:hover {
   background-color: rgba(132, 111, 148, 0.6);
   cursor: pointer;
+}
+
+.buttonController {
+  margin-left: 300px;
+}
+
+mat-card {
+  margin: 10px;
 }
