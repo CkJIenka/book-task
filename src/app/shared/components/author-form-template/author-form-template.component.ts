@@ -34,7 +34,7 @@ export class AuthorFormTemplateComponent implements OnInit, OnChanges {
       changes.authorTemplate.currentValue !== null &&
       changes.authorTemplate.currentValue !== changes.authorTemplate.previousValue
     ) {
-      this.authorTemplate = changes.authorTemplate.currentValue;
+      this.authorTemplate = { ...changes.authorTemplate.currentValue };
       this._authorSnapshot = { ...changes.authorTemplate.currentValue };
     }
   }
@@ -48,7 +48,7 @@ export class AuthorFormTemplateComponent implements OnInit, OnChanges {
 
   public resetTemplateForm(form: any): void {
     if (this.authorTemplate) {
-      this.authorTemplate = this._authorSnapshot ;
+      this.authorTemplate = { ...this._authorSnapshot } ;
     } else {
       this.clearTemplateForm(form);
     }
