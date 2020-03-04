@@ -10,6 +10,7 @@ import { BooksRoutingModule } from './books-routing.module';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
 import { BooksView } from './view/books/books.view';
 import { BookFormEditView } from './view/book-form-edit/book-form-edit.view';
+import { BookSearchComponent } from './components/book-search/book-search.component';
 
 import { SearchModule } from '@libs/search';
 
@@ -19,6 +20,7 @@ import { SearchModule } from '@libs/search';
     BookDetailComponent,
     BooksView,
     BookFormEditView,
+    BookSearchComponent,
   ],
   imports: [
     CommonModule,

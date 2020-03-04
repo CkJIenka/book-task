@@ -3,7 +3,7 @@
     <h1>Books List</h1>
     <mat-nav-list>
       <a mat-list-item routerLink="books" [queryParams]="{page: 1}" routerLinkActive="active">Books</a>
-      <a mat-list-item routerLink="authors" routerLinkActive="active">Authors</a>
+      <a mat-list-item routerLink="authors" [queryParams]="{page: 1}" routerLinkActive="active">Authors</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

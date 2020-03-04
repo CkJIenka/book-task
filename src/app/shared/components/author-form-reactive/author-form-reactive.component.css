@@ -1,17 +1,7 @@
-form {
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 800px;
+button {
+  outline: none;
 }
 
-mat-form-field {
-  width: 800px;
-}
-
-.formButton {
-  margin: 0 5px;
-}
-
-.buttonController {
-  margin-left: 300px;
+button:disabled {
+  cursor: not-allowed;
 }

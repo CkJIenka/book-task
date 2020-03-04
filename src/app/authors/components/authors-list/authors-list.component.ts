@@ -3,9 +3,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 import { AuthorsListService } from '@app/authors/services/authors-list.service';
-import { IMeta } from '@app/shared/interfaces/meta';
+import { IMeta } from '@app/shared/interfaces/meta.interface';
 
 @Component({
   selector: 'app-authors-list',
@@ -19,11 +19,15 @@ export class AuthorsListComponent implements OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   constructor(
-    private _authorsListService: AuthorsListService,
+    private readonly _authorsListService: AuthorsListService,
   ) { }
 
   public ngOnInit(): void {
     this.getAuthors();
+  }
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public getAuthors(page: number = 1, title: string = ''): void {
@@ -35,11 +39,6 @@ export class AuthorsListComponent implements OnInit, OnDestroy {
         this.authors = response.authors;
         this.requestMeta = response.meta;
       });
-  }
-
-  public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
   }
 
   public deleteAuthor(id: number): void {

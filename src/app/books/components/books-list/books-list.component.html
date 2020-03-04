@@ -1,19 +1,45 @@
-<app-search [debounce]="1000" (searchValue)="filterBooks(1, $event)"></app-search>
+<mat-accordion>
 
-<div class="container">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Title
+      </mat-panel-title>
+      <mat-panel-description>
+        Search for book's title
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-search [debounce]="1000" (searchValue)="filterBooks($event)"></app-search>
+  </mat-expansion-panel>
 
-  <p *ngIf="messageError" class="resultMessage">{{ messageError }}</p>
+  <mat-expansion-panel expanded="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Search
+      </mat-panel-title>
+      <mat-panel-description>
+        Search for book's title, price and data
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <app-book-search [searchValue]="queryParams" (fullSearchValue)="fullFilterBooks($event)"></app-book-search>
+  </mat-expansion-panel>
 
-  <div *ngFor="let book of books">
-    <img class="book-promo" src="../assets/images/book.jpg" alt="book-promo">
+</mat-accordion>
+
+<div class="container mb-3 w-75">
+
+  <p *ngIf="!books?.length" class="resultMessage">{{ messageError }}</p>
+
+  <div *ngFor="let book of books" class="w-75 mt-3 mb-3">
+    <img class="book-promo mr-3 mb-3" src="../assets/images/book.jpg" alt="book-promo">
     <div  class="book-description">
       <p class="book-title">{{ book.title }}</p>
       <p>{{ book.description }}</p>
       <p>{{ book.price | currency }}</p>
-      <a (click)="openBookDetail(book)">Click Here for Some Detail</a>
+      <button mat-stroked-button color="primary" type="button" (click)="openBookDetail(book)">Click Here for Some Detail</button>
     </div>
   </div>
 
-  <app-pagination [receivedMeta]="requestMeta" (selectPage)="getBooks($event, title)"></app-pagination>
+  <app-pagination [receivedMeta]="requestMeta" (selectPage)="changeBooksPage($event)"></app-pagination>
 </div>
 

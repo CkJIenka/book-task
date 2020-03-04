@@ -1,20 +1,24 @@
-<mat-card>
+<div class="container mt-3">
+  <button mat-stroked-button color="primary" type="button" class="back-button mb-3" (click)="goBack()">Back</button>
 
-<mat-card-title>Reactive Form</mat-card-title>
+  <mat-card class="mb-3 w-75">
 
-  <app-author-form-reactive
-    [authorReactive]="authorData" (authorReactiveSubmitted)="addAuthorData($event)">
+  <mat-card-title>Reactive Form</mat-card-title>
 
-  </app-author-form-reactive>
+    <app-author-form-reactive
+      [authorReactive]="authorData" (authorReactiveSubmitted)="addAuthorData($event)">
 
-</mat-card>
+    </app-author-form-reactive>
 
-<mat-card>
+  </mat-card>
 
-<mat-card-title>Template-driven Form</mat-card-title>
+  <mat-card class="w-75">
 
-  <app-author-form-template
-    [authorTemplate]="authorData" (authorTemplateSubmitted)="addAuthorData($event)">
-  </app-author-form-template>
+  <mat-card-title>Template-driven Form</mat-card-title>
 
-</mat-card>
+    <app-author-form-template
+      [authorTemplate]="authorData" (authorTemplateSubmitted)="addAuthorData($event)">
+    </app-author-form-template>
+
+  </mat-card>
+</div>

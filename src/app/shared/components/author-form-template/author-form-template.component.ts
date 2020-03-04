@@ -2,7 +2,7 @@ import {
   Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 } from '@angular/core';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 
 @Component({
   selector: 'app-author-form-template',
@@ -21,14 +21,6 @@ export class AuthorFormTemplateComponent implements OnInit, OnChanges {
 
   constructor() { }
 
-  public ngOnInit(): void {
-    this.authorTemplate = {
-      id: null,
-      first_name: '',
-      last_name: '',
-    };
-  }
-
   public ngOnChanges(changes: SimpleChanges): void {
     if (
       changes.authorTemplate.currentValue !== null &&
@@ -37,6 +29,14 @@ export class AuthorFormTemplateComponent implements OnInit, OnChanges {
       this.authorTemplate = { ...changes.authorTemplate.currentValue };
       this._authorSnapshot = { ...changes.authorTemplate.currentValue };
     }
+  }
+
+  public ngOnInit(): void {
+    this.authorTemplate = {
+      id: null,
+      first_name: '',
+      last_name: '',
+    };
   }
 
   public onSubmitTemplate(form: any): void {

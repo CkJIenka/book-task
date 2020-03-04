@@ -19,6 +19,7 @@ p {
 button {
   padding: 5px;
   margin: 10px auto;
+  outline: none;
 }
 
 button:hover {
@@ -29,3 +30,4 @@ button:active {
   background-color: white;
   opacity: 0.5;
 }
+

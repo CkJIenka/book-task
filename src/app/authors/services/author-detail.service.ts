@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,17 +12,17 @@ import { IAuthor } from '@app/shared/interfaces/authors';
 export class AuthorDetailService {
 
   constructor(
-    protected http: HttpClient,
+    private readonly _http: HttpClient,
   ) { }
 
   public getAuthor(id: number): Observable<IAuthor> {
-    return this.http.get<IAuthor>(`authors/${id}`)
+    return this._http.get<IAuthor>(`authors/${id}`)
       .pipe(
-        catchError(this.handleError<any>('getAuthor', {})),
+        catchError(this._handleError<any>('getAuthor', {})),
       );
   }
 
-  protected handleError<T>(operation: string = 'operation', result?: T): any {
+  private _handleError<T>(operation: string = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);
 

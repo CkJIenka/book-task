@@ -2,11 +2,12 @@ import {
   Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges, SimpleChanges,
 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
-import { IBook } from '@app/shared/interfaces/books';
-import {takeUntil} from 'rxjs/operators';
+import { IBook } from '@app/shared/interfaces/books/books.interface';
 
 @Component({
   selector: 'app-book-form',
@@ -25,7 +26,8 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
   private _destroy$ = new Subject<void>();
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private readonly _formBuilder: FormBuilder,
+    private readonly _location: Location,
   ) { }
 
   get title(): any {
@@ -33,6 +35,12 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
   }
   get description(): any {
     return this.bookForm.get('description');
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (changes.book.currentValue !== changes.book.previousValue) {
+      this._setInputValue(changes.book.currentValue);
+    }
   }
 
   public ngOnInit(): void {
@@ -52,10 +60,9 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
     }
   }
 
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.book.currentValue !== changes.book.previousValue) {
-      this._setInputValue(changes.book.currentValue);
-    }
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public onSubmit(book: IBook): void {
@@ -66,13 +73,12 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
     this.bookForm.reset();
   }
 
-  public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
-  }
-
   public clearBookForm(): void {
     this.bookForm.reset();
+  }
+
+  public goBack(): void {
+    this._location.back();
   }
 
   private _initForm(): void {

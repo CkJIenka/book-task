@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 
 
 @Component({
@@ -28,7 +28,7 @@ export class AuthorFormReactiveComponent implements OnInit, OnChanges, OnDestroy
 
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private readonly _formBuilder: FormBuilder,
   ) { }
 
   get firstName(): AbstractControl | null {
@@ -36,6 +36,15 @@ export class AuthorFormReactiveComponent implements OnInit, OnChanges, OnDestroy
   }
   get lastName(): AbstractControl | null {
     return this.authorForm.get('last_name');
+  }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    if (
+      changes.authorReactive.currentValue !== null &&
+      changes.authorReactive.currentValue !== changes.authorReactive.previousValue
+    ) {
+      this._patchFormValue(changes.authorReactive.currentValue);
+    }
   }
 
   public ngOnInit(): void {
@@ -55,13 +64,9 @@ export class AuthorFormReactiveComponent implements OnInit, OnChanges, OnDestroy
     }
   }
 
-  public ngOnChanges(changes: SimpleChanges): void {
-    if (
-      changes.authorReactive.currentValue !== null &&
-      changes.authorReactive.currentValue !== changes.authorReactive.previousValue
-    ) {
-      this._patchFormValue(changes.authorReactive.currentValue);
-    }
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public onSubmit(author: IAuthor): void {
@@ -82,11 +87,6 @@ export class AuthorFormReactiveComponent implements OnInit, OnChanges, OnDestroy
 
   public clearForm(): void {
     this.authorForm.reset();
-  }
-
-  public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
   }
 
   private _initForm(): void {

@@ -1,4 +1,5 @@
-<div class="container">
+<div class="container-fluid mt-3">
+  <button mat-stroked-button color="primary" type="button" class="back-button" (click)="goBack()">Back</button>
   <div>
   <p><b>{{ author.first_name }} {{ author.last_name | uppercase }}</b></p>
   <img src="../assets/images/author.jpg">
@@ -6,7 +7,7 @@
     <hr>
 
   <div class="control-button">
-    <button mat-stroked-button color="primary" class="change-author" routerLink="/authors/{{ id }}/edit">Change author's information</button>
-    <button mat-stroked-button color="primary" class="add-new-book" routerLink="/authors/{{ id }}/new_book">Add new book to author</button>
+    <button mat-stroked-button color="primary" type="button" class="change-author mr-3 mb-3" routerLink="/authors/{{ id }}/edit">Change author's information</button>
+    <button mat-stroked-button color="primary" type="button" class="add-new-book" routerLink="/authors/{{ id }}/new_book">Add new book to author</button>
   </div>
 </div>

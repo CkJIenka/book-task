@@ -2,41 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
-  margin-bottom: 15px;
 }
 
 .book-promo {
-  width: 100px;
-  height: 150px;
-  margin: auto 0;
+  max-width: 100px;
+  max-height: 150px;
 }
 
 .container div {
-  margin: 10px;
   display: flex;
-  width: 600px;
 }
 
 .book-description {
   display: flex;
   flex-direction: column;
-  max-width: 450px;
-}
-
-.book-description p {
-  margin: 5px;
-}
-
-.book-description a {
-  text-decoration: none;
-  font-weight: bold;
-  color: #9c9a3d;
-}
-
-.book-description a:hover {
-  cursor: pointer;
-  color: #8a820c;
 }
 
 .book-title {
@@ -45,6 +24,11 @@
   font-family: Lemonada, cursive;
 }
 
-.resultMessage {
-  margin-bottom: 20px;
+.book-description button:hover {
+  background-color: rgba(132, 111, 148, 0.6);
+}
+
+.book-description button:active {
+  background-color: white;
+  opacity: 0.5;
 }

@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 import { AuthorFormCreateService } from '@app/authors/services/author-form-create.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
@@ -18,12 +18,17 @@ export class AuthorFormCreateView implements OnInit, OnDestroy {
   private _destroy$ = new Subject<void>();
 
   constructor(
-    private _authorFormCreateService: AuthorFormCreateService,
-    private _location: Location,
-    private _toastrService: ToastrService,
+    private readonly _location: Location,
+    private readonly _authorFormCreateService: AuthorFormCreateService,
+    private readonly _toastrService: ToastrService,
   ) { }
 
   public ngOnInit(): void {
+  }
+
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   public authorSave(author: IAuthor): any {
@@ -31,20 +36,20 @@ export class AuthorFormCreateView implements OnInit, OnDestroy {
       .pipe(
           takeUntil(this._destroy$),
         )
-      .subscribe();
-    this._toastrService.open('Data was successfully added.');
-    setTimeout(() => {
-      this.goBack();
-    }, 2000);
+      .subscribe({
+        next: () => {},
+        error: () => {},
+        complete: () => {
+          this._toastrService.open('Data was successfully added.');
+          setTimeout(() => {
+            this.goBack();
+          }, 2000);
+        },
+      });
   }
 
   public goBack(): void {
     this._location.back();
-  }
-
-  public ngOnDestroy(): void {
-    this._destroy$.next();
-    this._destroy$.complete();
   }
 
 }

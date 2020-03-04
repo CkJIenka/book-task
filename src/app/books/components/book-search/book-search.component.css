@@ -1,0 +1,25 @@
+button {
+  outline: none;
+}
+
+button:hover {
+  background-color: rgba(132, 111, 148, 0.6);
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:active {
+  background-color: white;
+  opacity: 0.5;
+}
+
+.invalid mat-hint,
+.invalid mat-label {
+  color: #ff0000;
+}
+
+/deep/ .invalid .mat-form-field-underline {
+  background-color: #ff0000;
+}

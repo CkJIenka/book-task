@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 import { AuthorFormEditService } from '@app/authors/services/author-form-edit.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
@@ -22,10 +22,10 @@ export class AuthorFormEditView implements OnInit {
   private _destroy$ = new Subject<void>();
 
   constructor(
-    private _authorFormEditService: AuthorFormEditService,
-    private _route: ActivatedRoute,
-    private _location: Location,
-    private _toastrService: ToastrService,
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location,
+    private readonly _authorFormEditService: AuthorFormEditService,
+    private readonly _toastrService: ToastrService,
   ) { }
 
   public ngOnInit(): void {
@@ -33,15 +33,20 @@ export class AuthorFormEditView implements OnInit {
   }
 
   public authorEdit(author: IAuthor): void {
-    this._authorFormEditService.changeAuthor(author, this._id)
+    this._authorFormEditService.changeAuthor(this._id, author)
       .pipe(
         takeUntil(this._destroy$),
       )
-      .subscribe();
-    this._toastrService.open('Data was successfully changed.');
-    setTimeout(() => {
-      this.goBack();
-    }, 2000);
+      .subscribe({
+        next: () => {},
+        error: () => {},
+        complete: () => {
+          this._toastrService.open('Data was successfully added.');
+          setTimeout(() => {
+            this.goBack();
+          }, 2000);
+        },
+      });
   }
 
   public goBack(): void {

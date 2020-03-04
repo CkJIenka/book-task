@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 import { BooksListService } from '@app/books/services/books-list.service';
-import { IBook } from '@app/shared/interfaces/books';
+import { IBook } from '@app/shared/interfaces/books/books.interface';
 
 @Component({
   selector: 'app-book-description',
@@ -15,8 +15,8 @@ export class BookDetailComponent implements OnInit {
   public book: IBook;
 
   constructor(
-    private _bookListService: BooksListService,
-    private _dialogRef: MatDialogRef<BookDetailComponent>,
+    private readonly _bookListService: BooksListService,
+    private readonly _dialogRef: MatDialogRef<BookDetailComponent>,
     @Inject(MAT_DIALOG_DATA) data: IBook,
   ) {
     this.book = data;

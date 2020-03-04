@@ -1,12 +1,17 @@
-div {
+.button-paginator {
   display: inline;
-  margin-top: 10px;
-}
-
-button:hover {
-  background-color: rgba(132, 111, 148, 0.6);
 }
 
 .activeButton {
   background-color: rgba(176, 153, 194, 0.6);
+}
+
+button {
+  outline: none;
+}
+
+@media (max-width: 425px) {
+  button {
+    width: 10%;
+  }
 }

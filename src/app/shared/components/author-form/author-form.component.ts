@@ -1,8 +1,9 @@
 import {
   Component, OnInit, Input, Output, EventEmitter, OnChanges, SimpleChanges,
 } from '@angular/core';
+import { Location } from '@angular/common';
 
-import { IAuthor } from '@app/shared/interfaces/authors';
+import { IAuthor } from '@app/shared/interfaces/authors.interface';
 
 @Component({
   selector: 'app-author-form',
@@ -19,9 +20,9 @@ export class AuthorFormComponent implements OnInit, OnChanges {
 
   public authorData: IAuthor;
 
-  constructor() {}
-
-  public ngOnInit(): void {}
+  constructor(
+    private readonly _location: Location,
+  ) {}
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -32,8 +33,14 @@ export class AuthorFormComponent implements OnInit, OnChanges {
     }
   }
 
+  public ngOnInit(): void {}
+
   public addAuthorData(author: IAuthor): void {
     this.authorSubmitted.emit(author);
+  }
+
+  public goBack(): void {
+    this._location.back();
   }
 
 }

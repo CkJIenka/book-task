@@ -1,30 +1,34 @@
-<mat-card>
+<div class="container mt-3">
+  <button mat-stroked-button color="primary" type="button" class="back-button mb-3" (click)="goBack()">Back</button>
 
-  <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)">
+  <mat-card class="w-75">
+
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit(bookForm.value)" class="w-100">
 
 <!-- BOOK'S TITLE -->
-    <mat-form-field>
-      <mat-label>Enter book's title:</mat-label>
-      <input matInput id="title" name="title" type="text" formControlName="title">
-      <mat-error *ngIf="title.touched && title.invalid && title.errors.required">
-        Book's title is required.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Enter book's title:</mat-label>
+        <input matInput id="title" name="title" type="text" formControlName="title">
+        <mat-error *ngIf="title.touched && title.invalid && title.errors.required">
+          Book's title is required.
+        </mat-error>
+      </mat-form-field>
 
 <!--  BOOK'S DESCRIPTION-->
-    <mat-form-field>
-      <mat-label>Enter book's description:</mat-label>
-      <textarea matInput id="description" name="description" type="text" formControlName="description"></textarea>
-      <mat-error *ngIf="description.touched && description.invalid && description.errors.required">
-        Book's description is required.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Enter book's description:</mat-label>
+        <textarea matInput id="description" name="description" type="text" formControlName="description"></textarea>
+        <mat-error *ngIf="description.touched && description.invalid && description.errors.required">
+          Book's description is required.
+        </mat-error>
+      </mat-form-field>
 
-    <div class="buttonController">
-      <button mat-stroked-button color="primary" type="submit" [disabled]="bookForm.invalid" class="button">Submit</button>
-      <button mat-stroked-button color="primary" class="button" (click)="clearBookForm()">Clear</button>
-    </div>
+      <div class="buttonController mx-auto">
+        <button mat-stroked-button color="primary" type="submit" [disabled]="bookForm.invalid" class="button mr-3">Submit</button>
+        <button mat-stroked-button color="primary" type="reset" class="button" (click)="clearBookForm()">Clear</button>
+      </div>
 
-  </form>
+    </form>
 
-</mat-card>
+  </mat-card>
+</div>

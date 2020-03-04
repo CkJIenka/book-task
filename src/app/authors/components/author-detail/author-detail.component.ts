@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AuthorDetailService } from '@app/authors/services/author-detail.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-author-detail',
@@ -22,10 +23,10 @@ export class AuthorDetailComponent implements OnInit, OnDestroy {
 
   private _destroy$ = new Subject<void>();
 
-
   constructor(
-    private _authorDetailService: AuthorDetailService,
-    private _route: ActivatedRoute,
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location,
+    private readonly _authorDetailService: AuthorDetailService,
   ) { }
 
   public ngOnInit(): void {
@@ -35,6 +36,10 @@ export class AuthorDetailComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this._destroy$.next();
     this._destroy$.complete();
+  }
+
+  public goBack(): void {
+    this._location.back();
   }
 
   private _getAuthor(): void {

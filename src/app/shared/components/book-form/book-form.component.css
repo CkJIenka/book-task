@@ -1,26 +1,16 @@
-form {
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 800px;
-}
-
-mat-form-field {
-  width: 800px;
-}
-
-.button {
-  margin: 0 5px;
-}
-
 .button:hover {
   background-color: rgba(132, 111, 148, 0.6);
   cursor: pointer;
 }
 
-.buttonController {
-  margin-left: 300px;
+.back-button:hover {
+  background-color: rgba(132, 111, 148, 0.6);
 }
 
-mat-card {
-  margin: 10px;
+button {
+  outline: none;
+}
+
+.button:disabled {
+  cursor: not-allowed;
 }

@@ -1,33 +1,19 @@
-.container {
-  width: 800px;
-  margin: 15px auto;
-  display: flex;
-  flex-direction: column;
-}
+/*.container {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*}*/
 
 .container h3 {
   color: #666666;
-  margin-top: 20px;
 }
 
-.container ul {
-  margin-top: 20px;
-}
 .container li {
-  margin-top: 10px;
   list-style-type: none;
-}
-
-.container img {
-  max-width: 100px;
-  margin-right: 10px;
 }
 
 .container a {
   text-decoration: none;
   color: black;
-  position: relative;
-  top: -25px;
 }
 
 .container a:hover {
@@ -36,11 +22,6 @@
 
 .deleteButton {
   float: right;
-  margin-top: 25px;
-}
-
-.add-author {
-  margin: 0 auto;
 }
 
 .deleteButton:hover,
@@ -49,5 +30,9 @@
 }
 
 app-pagination {
-  align-self: center;
+  text-align: center;
+}
+
+button {
+  outline: none;
 }

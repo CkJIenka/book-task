@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { MatInputModule, MatButtonModule, MatCardModule } from '@angular/material';
+import {
+  MatInputModule, MatButtonModule, MatCardModule,
+  MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
+} from '@angular/material';
 
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { AuthorFormComponent } from './components/author-form/author-form.component';
@@ -27,12 +30,19 @@ import { AuthorFormTemplateComponent } from './components/author-form-template/a
     RouterModule,
     FormsModule,
     MatCardModule,
+    MatExpansionModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [
     PaginationComponent,
     AuthorFormComponent,
     BookFormComponent,
     MatButtonModule,
+    MatExpansionModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatDatepickerModule,
   ],
 })
 export class SharedModule { }

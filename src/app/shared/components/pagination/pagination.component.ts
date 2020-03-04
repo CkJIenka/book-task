@@ -1,8 +1,9 @@
 import {
   Component, OnInit, Input, Output, EventEmitter, SimpleChanges, OnChanges
 } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { IMeta } from '@app/shared/interfaces/meta';
+import { IMeta } from '@app/shared/interfaces/meta.interface';
 
 import { PaginationService } from './pagination.service';
 
@@ -22,32 +23,48 @@ export class PaginationComponent implements OnInit, OnChanges {
   public activedButton = true;
   public pagesAmount = [];
 
-  public receivedPagesData: number;
+  public receivedPagesAmount: number;
   public currentPageNumber: number;
 
   constructor(
-    protected paginationService: PaginationService,
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute,
+    private readonly _paginationService: PaginationService,
   ) {}
-
-  public ngOnInit(): void { }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.receivedMeta.currentValue !== changes.receivedMeta.previousValue) {
-      this.receivedPagesData = changes.receivedMeta.currentValue.pages;
+      this.receivedPagesAmount = changes.receivedMeta.currentValue.pages;
       this.currentPageNumber = changes.receivedMeta.currentValue.page;
       this._createPaginator();
     }
   }
 
+  public ngOnInit(): void { }
+
   public previousPage(): void {
     if (this.currentPageNumber > 1) {
       this.selectPageNumber(this.currentPageNumber - 1);
+      this._router.navigate([], {
+        relativeTo: this._route,
+        queryParamsHandling: 'merge',
+        queryParams: {
+          page: this.currentPageNumber,
+        },
+      });
     }
   }
 
   public nextPage(): void {
-    if (this.currentPageNumber < this.receivedPagesData) {
+    if (this.currentPageNumber < this.receivedPagesAmount) {
       this.selectPageNumber(this.currentPageNumber + 1);
+      this._router.navigate([], {
+        relativeTo: this._route,
+        queryParamsHandling: 'merge',
+        queryParams: {
+          page: this.currentPageNumber,
+        },
+      });
     }
   }
 
@@ -55,6 +72,13 @@ export class PaginationComponent implements OnInit, OnChanges {
     this.selectPage.emit(page);
     this.currentPageNumber = page;
     this._createPaginator();
+    this._router.navigate([], {
+      relativeTo: this._route,
+      queryParamsHandling: 'merge',
+      queryParams: {
+        page: `${page}`,
+      },
+    });
   }
 
   public goFirst(page: number): void {
@@ -67,7 +91,7 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   private _createPaginator(): void {
     this.pagesAmount =
-      this.paginationService.createPaginator(this.currentPageNumber, this.receivedPagesData);
+      this._paginationService.createPaginator(this.currentPageNumber, this.receivedPagesAmount);
   }
 
 }

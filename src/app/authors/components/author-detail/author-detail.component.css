@@ -1,36 +1,30 @@
-.container {
-  width: 800px;
-  margin: 15px auto;
-}
-
 .container h3 {
   color: #666666;
-  margin-top: 10px;
 }
 
 .container input {
-  width: 800px;
-  height: 20px;
   font-weight: bold;
   border-radius: 5px;
   border: slategrey 1px solid;
   outline: none;
-  padding: 5px;
   color: black;
 }
 
 p {
   font-size: 24px;
-  margin-bottom: 10px;
 }
 
 img {
   max-width: 250px;
-  margin-bottom: 10px;
 }
 
 .change-author:hover,
-.add-new-book:hover {
-    background-color: rgba(132, 111, 148, 0.6);
+.add-new-book:hover,
+.back-button:hover {
+  background-color: rgba(132, 111, 148, 0.6);
   cursor: pointer;
+}
+
+button {
+  outline: none;
 }

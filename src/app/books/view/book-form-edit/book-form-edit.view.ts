@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
-import { IBook } from '@app/shared/interfaces/books';
+import { IBook } from '@app/shared/interfaces/books/books.interface';
 import { BookFormEditService } from '@app/books/services/book-form-edit.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
@@ -22,10 +22,10 @@ export class BookFormEditView implements OnInit {
   private _destroy$ = new Subject<void>();
 
   constructor(
-    private _bookFormEditService: BookFormEditService,
-    private _route: ActivatedRoute,
-    private _location: Location,
-    private _toastrService: ToastrService,
+    private readonly _route: ActivatedRoute,
+    private readonly _location: Location,
+    private readonly _bookFormEditService: BookFormEditService,
+    private readonly _toastrService: ToastrService,
   ) { }
 
   public ngOnInit(): void {
@@ -33,15 +33,20 @@ export class BookFormEditView implements OnInit {
   }
 
   public bookEdit(book: IBook): void {
-    this._bookFormEditService.changeBook(book, this._id)
+    this._bookFormEditService.changeBook(this._id, book)
       .pipe(
         takeUntil(this._destroy$),
       )
-      .subscribe();
-    this._toastrService.open('Information about book was successfully changed.');
-    setTimeout(() => {
-      this.goBack();
-    }, 2000);
+      .subscribe({
+        next: () => {},
+        error: () => {},
+        complete: () => {
+          this._toastrService.open('Data was successfully added.');
+          setTimeout(() => {
+            this.goBack();
+          }, 2000);
+        },
+      });
   }
 
   public goBack(): void {

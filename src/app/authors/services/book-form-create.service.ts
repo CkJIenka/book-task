@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IBook } from '@app/shared/interfaces/books';
-import { IResponceList } from '@app/shared/interfaces/responce-list';
+import { IBook } from '@app/shared/interfaces/books/books.interface';
+import { IResponceList } from '@app/shared/interfaces/responce-list.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,17 +13,17 @@ import { IResponceList } from '@app/shared/interfaces/responce-list';
 export class BookFormCreateService {
 
   constructor(
-    protected _http: HttpClient,
+    private readonly _http: HttpClient,
   ) { }
 
-  public postBook(book: IBook, id: number): Observable<any> {
+  public postBook(id: number, book: IBook): Observable<any> {
     return this._http.post(`authors/${id}/books`, book)
       .pipe(
-        catchError(this.handleError<IResponceList>('postBook', {})),
+        catchError(this._handleError<IResponceList>('postBook', {})),
       );
   }
 
-  protected handleError<T>(operation: string = 'operation', result?: T): any {
+  private _handleError<T>(operation: string = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);
 

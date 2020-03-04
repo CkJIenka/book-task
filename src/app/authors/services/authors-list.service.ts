@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { IResponceList } from '@app/shared/interfaces/responce-list';
+import { IResponceList } from '@app/shared/interfaces/responce-list.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,24 +12,36 @@ import { IResponceList } from '@app/shared/interfaces/responce-list';
 export class AuthorsListService {
 
   constructor(
-    protected _http: HttpClient,
+    private readonly _http: HttpClient,
   ) { }
 
   public getAuthors(page: number, title: string): Observable<IResponceList> {
-    return this._http.get<IResponceList>(`authors?page=${page}`)
+    const queryParams: any = {
+      page,
+    };
+
+    return this._http
+      .get<IResponceList>(
+        'authors',
+      {
+        params: queryParams,
+      })
       .pipe(
-        catchError(this.handleError<IResponceList>('getAuthors', {})),
+        catchError(this._handleError<IResponceList>('getAuthors', {})),
       );
   }
 
   public deleteAuthor(id: number): Observable<any> {
-    return this._http.delete(`authors/${id}`)
+    return this._http
+      .delete(
+        `authors/${id}`,
+      )
       .pipe(
-        catchError(this.handleError<IResponceList>('deleteAuthor', {})),
+        catchError(this._handleError<IResponceList>('deleteAuthor', {})),
       );
   }
 
-  protected handleError<T>(operation: string = 'operation', result?: T): any {
+  private _handleError<T>(operation: string = 'operation', result?: T): any {
     return (error: any): Observable<T> => {
       console.error(error);
 
