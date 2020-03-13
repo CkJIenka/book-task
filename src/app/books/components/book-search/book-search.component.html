@@ -42,7 +42,7 @@
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
        >
     </mat-chip-list>
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
+   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
       <mat-option *ngFor="let genre of allGenres" [value]="genre">
         {{ genre.name }}
       </mat-option>

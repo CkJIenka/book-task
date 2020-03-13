@@ -104,12 +104,14 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     if (index >= 0) {
       this.genres.splice(index, 1);
     }
+    this.bookGenres.setValue(this.genres);
   }
 
   public selectedBookGenre(event: MatAutocompleteSelectedEvent): void {
     if (this.genres.indexOf(event.option.value) === -1) {
       this.genres.push(event.option.value.name);
     }
+    this.bookGenres.setValue(this.genres);
   }
 
   private _initForm(): void {
@@ -124,7 +126,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
         dateEnd: null,
       }),
       phoneNumber: null,
-      bookGenres: '',
+      bookGenres: [{}],
     });
   }
 
