@@ -14,12 +14,3 @@ button:active {
   background-color: white;
   opacity: 0.5;
 }
-
-.invalid mat-hint,
-.invalid mat-label {
-  color: #ff0000;
-}
-
-/deep/ .invalid .mat-form-field-underline {
-  background-color: #ff0000;
-}

@@ -41,7 +41,7 @@ export class PricesComponent implements OnInit {
     this._patchPriceValue();
     this.price.valueChanges
       .subscribe((val) =>
-        this.priceSearchValue.emit(this.price),
+        this.priceSearchValue.emit(this.price.controls),
       );
   }
 

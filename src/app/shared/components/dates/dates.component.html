@@ -1,0 +1,23 @@
+<form [formGroup]="date" class="row" [ngClass]="date.hasError('date-range-error') ? {invalid: true} : '' "> 
+  <!-- Date Start -->
+  <mat-form-field class="col-6">
+    <mat-label>Enter book's date from</mat-label>
+    <input matInput [matDatepicker]="dp1" formControlName="dateStart" placeholder="mm/dd/yyyy">
+    <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+    <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+    <mat-hint *ngIf="date.hasError('date-range-error')">
+      Start date cannot be later than end date.
+    </mat-hint>
+  </mat-form-field>
+
+  <!-- Date End -->
+  <mat-form-field class="col-6">
+    <mat-label>Enter book's date till</mat-label>
+   <input matInput [matDatepicker]="dp2" formControlName="dateEnd" placeholder="mm/dd/yyyy">
+   <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+   <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+   <mat-hint *ngIf="date.hasError('date-range-error')">
+      End date cannot be earlier than start date.
+    </mat-hint>
+  </mat-form-field>
+</form>

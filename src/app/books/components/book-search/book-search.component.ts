@@ -5,7 +5,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 
 import { Subject } from 'rxjs';
 
-import { customDateFormValidator } from '@app/shared/utils/custom-date-form-validator';
 import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 
 @Component({
@@ -29,7 +28,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     private readonly _formBuilder: FormBuilder,
   ) { }
 
-  public get price(): AbstractControl | null {
+  public get priceControl(): AbstractControl | null {
     return this.bookSearchForm.get('price');
   }
   public get priceFrom(): AbstractControl | null {
@@ -64,28 +63,36 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     this.fullSearchValue.emit(this.bookSearchForm.getRawValue());
   }
 
-  public setPriceSearchValue(price: FormGroup): void {
-    this.priceFrom.setValue(price.controls.priceFrom.value);
-    if (price.controls.priceFrom.invalid) {
+  public setPriceSearchValue(price: any): void {
+    this.priceFrom.setValue(price.priceFrom.value);
+    if (price.priceFrom.invalid) {
       this.priceFrom.setErrors({ invalid: true });
     }
-    this.priceTo.setValue(price.controls.priceTo.value);
-    if (price.controls.priceTo.invalid) {
+    this.priceTo.setValue(price.priceTo.value);
+    if (price.priceTo.invalid) {
       this.priceTo.setErrors({ invalid: true });
     }
+  }
+
+  public setDateSearchValue(date: FormGroup): void {
+    this.dateStart.setValue(date.controls.dateStart.value);
+    if (date.invalid) {
+      this.dateStart.setErrors({ invalid: true });
+    }
+    this.dateEnd.setValue(date.controls.dateEnd.value);
   }
 
   private _initForm(): void {
     this.bookSearchForm = this._formBuilder.group({
       title: '',
       price: this._formBuilder.group({
-        priceFrom: [null, Validators.min(0)],
-        priceTo: [null, Validators.min(0)],
+        priceFrom: null,
+        priceTo: null,
       }),
       date: this._formBuilder.group({
         dateStart: null,
         dateEnd: null,
-      }, { validators: customDateFormValidator() }),
+      }),
       phoneNumber: null,
     });
   }

@@ -16,6 +16,7 @@ import { BookFormComponent } from './components/book-form/book-form.component';
 import { AuthorFormReactiveComponent } from './components/author-form-reactive/author-form-reactive.component';
 import { AuthorFormTemplateComponent } from './components/author-form-template/author-form-template.component';
 import { PricesComponent } from './components/prices/prices.component';
+import { DatesComponent } from './components/dates/dates.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { PricesComponent } from './components/prices/prices.component';
     AuthorFormReactiveComponent,
     AuthorFormTemplateComponent,
     PricesComponent,
+    DatesComponent,
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { PricesComponent } from './components/prices/prices.component';
     TextMaskModule,
     MatTableModule,
     PricesComponent,
+    DatesComponent,
   ],
 })
 export class SharedModule { }

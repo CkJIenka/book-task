@@ -7,36 +7,9 @@
   </mat-form-field>
 
   <!-- Prices -->
-  <app-prices class="col-12" [priceValue]="price" (priceSearchValue)="setPriceSearchValue($event)"></app-prices>
+  <app-prices class="col-12" [priceValue]="priceControl" (priceSearchValue)="setPriceSearchValue($event)"></app-prices>
 
-  <div
-    formGroupName="date"
-    class="col-12 p-0"
-    [ngClass]="dateControl.hasError('date-range-error') ? {invalid: true} : '' ">
-
-    <!-- Date Start -->
-    <mat-form-field class="col-6">
-      <mat-label>Enter book's date from</mat-label>
-      <input matInput [matDatepicker]="dp1" formControlName="dateStart" placeholder="mm/dd/yyyy">
-      <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
-      <mat-datepicker #dp1 disabled="false"></mat-datepicker>
-      <mat-hint *ngIf="dateControl.hasError('date-range-error')">
-        Start date cannot be later than end date.
-      </mat-hint>
-    </mat-form-field>
-
-    <!-- Date End -->
-    <mat-form-field class="col-6">
-      <mat-label>Enter book's date till</mat-label>
-      <input matInput [matDatepicker]="dp2" formControlName="dateEnd" placeholder="mm/dd/yyyy">
-      <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
-      <mat-datepicker #dp2 disabled="false"></mat-datepicker>
-      <mat-hint *ngIf="dateControl.hasError('date-range-error')">
-        End date cannot be earlier than start date.
-      </mat-hint>
-    </mat-form-field>
-
-  </div>
+  <app-dates class="col-12" [dateValue]="dateControl" (dateSearchValue)="setDateSearchValue($event)"></app-dates>
 
   <!-- Publisher Phone Number -->
   <mat-form-field class="col-6">

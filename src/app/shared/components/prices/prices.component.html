@@ -1,4 +1,5 @@
 <form [formGroup]="price" class="row">
+  <!-- Price From -->
 <mat-form-field class="col-6">
   <mat-label>Enter book's price from</mat-label>
   <input matInput="number" type="number" name="priceFrom" formControlName="priceFrom" min="0">
@@ -13,6 +14,7 @@
   </mat-error>
 </mat-form-field>
 
+<!-- Price To -->
 <mat-form-field class="col-6">
   <mat-label>Enter book's price to</mat-label>
   <input matInput="number" type="number" name="priceTo" formControlName="priceTo" min="0">

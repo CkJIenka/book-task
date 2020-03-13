@@ -9,7 +9,6 @@ export function customDateFormValidator(): ValidatorFn {
       dateStart.value !== null &&
       dateEnd.value !== null &&
       dateStart.value.getTime() > dateEnd.value.getTime()) {
-
       return {
         'date-range-error': {},
       };
