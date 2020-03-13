@@ -1,18 +1,20 @@
 import {
   Component, OnInit, OnDestroy, Input, Output, EventEmitter, OnChanges, SimpleChanges,
 } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { DatePipe, Location } from '@angular/common';
 
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {debounce, debounceTime, takeUntil} from 'rxjs/operators';
 
+import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 import { IBook } from '@app/shared/interfaces/books/books.interface';
 
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
   styleUrls: ['./book-form.component.css'],
+  providers: [DatePipe],
 })
 export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
 
@@ -23,18 +25,29 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
   public readonly bookSubmitted = new EventEmitter<object>();
 
   public bookForm: FormGroup;
+  public phoneNumberMask = PHONE_NUMBER_MASK.slice();
   private _destroy$ = new Subject<void>();
 
   constructor(
     private readonly _formBuilder: FormBuilder,
     private readonly _location: Location,
+    private readonly _datePipe: DatePipe,
   ) { }
 
-  get title(): any {
+  public get title(): AbstractControl | null {
     return this.bookForm.get('title');
   }
-  get description(): any {
+
+  public get description(): AbstractControl | null {
     return this.bookForm.get('description');
+  }
+
+  public get datePublishing(): AbstractControl | null {
+    return this.bookForm.get('datePublishing');
+  }
+
+  public get phoneNumber(): AbstractControl | null {
+    return this.bookForm.get('phoneNumber');
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
@@ -45,19 +58,7 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
 
   public ngOnInit(): void {
     this._initForm();
-    if (this.bookForm) {
-      this.bookForm.get('title').valueChanges
-        .pipe(
-          takeUntil(this._destroy$),
-        )
-        .subscribe((val) => {
-          if (val) {
-            this.bookForm.get('description').enable();
-          } else {
-            this.bookForm.get('description').disable();
-          }
-        });
-    }
+    this._inputChange();
   }
 
   public ngOnDestroy(): void {
@@ -69,6 +70,8 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
     if (this.bookForm.invalid) {
       return;
     }
+    book.datePublishing = this._datePipe.transform(book.datePublishing, 'yyyy-MM-dd');
+    book.phoneNumber = book.phoneNumber.replace(/[()-]/g, '');
     this.bookSubmitted.emit(book);
     this.bookForm.reset();
   }
@@ -91,12 +94,45 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
         { value: '', disabled: true },
         Validators.required,
       ],
+      datePublishing: [
+        { value: null, disabled: true },
+        Validators.required,
+      ],
+      phoneNumber: [
+        { value: null, disabled: true },
+        Validators.required,
+      ],
     });
   }
 
   private _setInputValue(book: IBook): void {
     this.title.patchValue(book.title);
     this.description.patchValue(book.description);
+  }
+
+  private _inputChange(): void {
+    this.title.valueChanges
+      .pipe(
+        takeUntil(this._destroy$),
+        debounceTime(200),
+      )
+      .subscribe((val) => {
+        if (val) {
+          if (!this.description.enabled) {
+            this.description.enable();
+          }
+          if (!this.datePublishing.enabled) {
+            this.datePublishing.enable();
+          }
+          if (!this.phoneNumber.enabled) {
+            this.phoneNumber.enable();
+          }
+        } else {
+          this.phoneNumber.disable();
+          this.datePublishing.disable();
+          this.description.disable();
+        }
+      });
   }
 
 }

@@ -1,15 +1,15 @@
-<div class="mx-auto">
-  <button mat-stroked-button color="primary"
+<div class="container">
+  <button mat-mini-fab color="primary"
           (click)="goFirst(1)"><<</button>
-  <button mat-stroked-button color="primary"
+  <button mat-mini-fab color="primary"
           (click)="previousPage()"><</button>
   <div class="button-paginator" *ngFor="let page of pagesAmount">
-    <button mat-stroked-button color="primary" (click)="selectPageNumber(page)"
+    <button mat-mini-fab color="primary" (click)="selectPageNumber(page)"
             [ngClass]="page === currentPageNumber ? {activeButton: activedButton} : ''">{{ page }}
     </button>
   </div>
-  <button mat-stroked-button color="primary"
+  <button mat-mini-fab color="primary"
           (click)="nextPage()">></button>
-  <button mat-stroked-button color="primary"
+  <button mat-mini-fab color="primary"
           (click)="goLast(receivedPagesAmount)">>></button>
 </div>

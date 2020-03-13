@@ -1,0 +1,26 @@
+<form [formGroup]="price" class="row">
+<mat-form-field class="col-6">
+  <mat-label>Enter book's price from</mat-label>
+  <input matInput="number" type="number" name="priceFrom" formControlName="priceFrom" min="0">
+  <mat-error *ngIf="priceFrom.touched && priceFrom.invalid && priceFrom.errors.min">
+    Price can't be less than 0.
+  </mat-error>
+  <mat-error *ngIf="priceFrom.hasError('required')">
+    Price from is required.
+  </mat-error>
+  <mat-error *ngIf="priceFrom.hasError('max')">
+    Price can't be more than end price.
+  </mat-error>
+</mat-form-field>
+
+<mat-form-field class="col-6">
+  <mat-label>Enter book's price to</mat-label>
+  <input matInput="number" type="number" name="priceTo" formControlName="priceTo" min="0">
+  <mat-error *ngIf="priceTo.hasError('required')">
+    Price to is required.
+  </mat-error>
+  <mat-error *ngIf="priceTo.touched && priceTo.invalid && priceTo.errors.min">
+    Price can't be less than 0 or start price.
+  </mat-error> 
+</mat-form-field>
+</form>

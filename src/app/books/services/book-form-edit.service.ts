@@ -17,7 +17,12 @@ export class BookFormEditService {
   ) { }
 
   public changeBook(id: number, book: IBook): Observable<any> {
-    return this._http.put(`books/${id}`, book)
+    const currentChanging = {
+      title: book.title,
+      description: book.description,
+    };
+
+    return this._http.put(`books/${id}`, currentChanging)
       .pipe(
         catchError(this.handleError<IResponceList>('changeBook', {})),
       );

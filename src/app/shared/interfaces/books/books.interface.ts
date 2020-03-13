@@ -5,4 +5,6 @@ export interface IBook {
   title: string;
   price: number;
   genres: [];
+  datePublishing?: object | string;
+  phoneNumber?: string;
 }

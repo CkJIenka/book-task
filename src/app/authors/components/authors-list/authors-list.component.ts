@@ -16,6 +16,7 @@ export class AuthorsListComponent implements OnInit, OnDestroy {
 
   public requestMeta: IMeta;
   public authors: IAuthor[];
+  public displayedColumns: string[] = ['authorLogo', 'authorName', 'deleteButton'];
   private _destroy$ = new Subject<void>();
 
   constructor(

@@ -13,6 +13,7 @@ import { BookFormEditView } from './view/book-form-edit/book-form-edit.view';
 import { BookSearchComponent } from './components/book-search/book-search.component';
 
 import { SearchModule } from '@libs/search';
+import { CustomControlModule } from '@libs/custom-control-value-accessor'
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SearchModule } from '@libs/search';
     SharedModule,
     MatDialogModule,
     SearchModule,
+    CustomControlModule,
   ],
   exports: [
   ],

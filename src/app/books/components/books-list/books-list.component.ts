@@ -78,8 +78,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.queryParams = {
       page: 1,
       title_cont: searchValue.title,
-      price_from: searchValue.priceFrom,
-      price_to: searchValue.priceTo,
+      price_from: searchValue.price.priceFrom,
+      price_to: searchValue.price.priceTo,
       date_start: searchValue.date.dateStart,
       date_end: searchValue.date.dateEnd,
     };
@@ -90,8 +90,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
       queryParams: {
         page: '1',
         title_cont: searchValue.title,
-        price_from: searchValue.priceFrom,
-        price_to: searchValue.priceTo,
+        price_from: searchValue.price.priceFrom,
+        price_to: searchValue.price.priceTo,
         date_start: this._datePipe.transform(
             searchValue.date.dateStart,
             'MM-dd-yyyy',

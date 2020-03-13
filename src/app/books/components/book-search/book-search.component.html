@@ -6,30 +6,14 @@
     <input matInput type="text" name="title" formControlName="title">
   </mat-form-field>
 
-  <!-- Price From -->
-  <mat-form-field class="col-6">
-    <mat-label>Enter book's price from</mat-label>
-    <input matInput="number" type="number" name="priceFrom" formControlName="priceFrom" min="0">
-    <mat-error *ngIf="priceFrom.touched && priceFrom.invalid && priceFrom.errors.min">
-     Price can't be less than 0.
-    </mat-error>
-    <mat-error *ngIf="priceFrom.touched && priceFrom.invalid && priceFrom.errors.max">
-      Price can't be more than end price.
-    </mat-error>
-  </mat-form-field>
-  <!-- Price To -->
-  <mat-form-field class="col-6">
-    <mat-label>Enter book's price to</mat-label>
-    <input matInput="number" type="number" name="priceTo" formControlName="priceTo" min="0">
-    <mat-error *ngIf="priceTo.touched && priceTo.invalid && priceTo.errors.min">
-      Price can't be less than 0 or start price.
-    </mat-error>
-  </mat-form-field>
+  <!-- Prices -->
+  <app-prices class="col-12" [priceValue]="price" (priceSearchValue)="setPriceSearchValue($event)"></app-prices>
 
   <div
     formGroupName="date"
     class="col-12 p-0"
     [ngClass]="dateControl.hasError('date-range-error') ? {invalid: true} : '' ">
+
     <!-- Date Start -->
     <mat-form-field class="col-6">
       <mat-label>Enter book's date from</mat-label>
@@ -53,6 +37,16 @@
     </mat-form-field>
 
   </div>
+
+  <!-- Publisher Phone Number -->
+  <mat-form-field class="col-6">
+    <mat-label>Enter publisher phone number</mat-label>
+    <input matInput
+           type="text" name="phoneNumber"
+           formControlName="phoneNumber"
+           [textMask]="{mask: phoneNumberMask}"
+           placeholder="x(xxx)-xxx-xx-xx">
+  </mat-form-field>
 
   <div class="col-12">
     <button mat-stroked-button color="primary" type="submit" [disabled]="bookSearchForm.invalid">

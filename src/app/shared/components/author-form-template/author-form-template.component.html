@@ -1,7 +1,7 @@
-<form #authorFormTemplate="ngForm" (ngSubmit)="onSubmitTemplate(authorFormTemplate)" class="w-100">
+<form #authorFormTemplate="ngForm" (ngSubmit)="onSubmitTemplate(authorFormTemplate)" class="row">
 
-  <!-- FIRST NAME -->
-  <mat-form-field class="w-100">
+  <!-- First Name -->
+  <mat-form-field class="col-12">
     <mat-label>Enter author's first-name:</mat-label>
     <input matInput type="text"
            [(ngModel)]="authorTemplate.first_name" name="first_name"
@@ -14,8 +14,8 @@
     </mat-error>
   </mat-form-field>
 
-  <!-- LAST NAME -->
-  <mat-form-field class="w-100">
+  <!-- Last Name -->
+  <mat-form-field class="col-12">
     <mat-label>Enter author's last-name:</mat-label>
     <input matInput type="text"
            [(ngModel)]="authorTemplate.last_name" name="last_name"
@@ -29,7 +29,7 @@
     </mat-error>
   </mat-form-field>
 
-  <div class="buttonController">
+  <div class="buttonController col-12">
     <button mat-stroked-button color="primary" type="submit" [disabled]="authorFormTemplate.invalid" class="formButton mr-3">Submit</button>
     <button mat-stroked-button color="primary" type="button" class="formButton mr-3" (click)="resetTemplateForm(authorFormTemplate)">Reset</button>
     <button mat-stroked-button color="primary" type="reset" class="formButton" (click)="clearTemplateForm(authorFormTemplate)">Clear</button>

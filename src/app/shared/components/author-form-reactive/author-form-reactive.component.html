@@ -1,9 +1,9 @@
-<form [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm.value)" class="w-100">
+<form [formGroup]="authorForm" (ngSubmit)="onSubmit(authorForm.value)" class="row">
 
-  <!--  FIRST NAME-->
-  <mat-form-field class="w-100">
+  <!-- First Name -->
+  <mat-form-field class="col-12">
     <mat-label>Enter author's first-name:</mat-label>
-    <input matInput id="first_name" name="first_name" type="text" formControlName="first_name">
+    <input matInput id="first_name" name="first_name" type="text" formControlName="first_name" required>
     <mat-error *ngIf="firstName.touched && firstName.invalid && firstName.errors.required">
       First-name is required.
     </mat-error>
@@ -12,10 +12,10 @@
     </mat-error>
   </mat-form-field>
 
-  <!--  LAST NAME-->
-  <mat-form-field class="w-100">
+  <!-- Last Name -->
+  <mat-form-field  class="col-12">
     <mat-label>Enter author's last-name:</mat-label>
-    <input matInput id="last_name" name="last_name" type="text" formControlName="last_name">
+    <input matInput id="last_name" name="last_name" type="text" formControlName="last_name" required>
     <mat-error *ngIf="lastName.touched && lastName.invalid && lastName.errors.required">
       Last-name is required.
     </mat-error>
@@ -24,7 +24,7 @@
     </mat-error>
   </mat-form-field>
 
-  <div class="buttonController">
+  <div class="buttonController" class="col-12">
     <button mat-stroked-button color="primary" type="submit" [disabled]="authorForm.invalid" class="formButton mr-3">Submit</button>
     <button mat-stroked-button color="primary" type="button" (click)="resetForm()" class="formButton mr-3">Reset</button>
     <button mat-stroked-button color="primary" type="reset" (click)="clearForm()" class="formButton">Clear</button>

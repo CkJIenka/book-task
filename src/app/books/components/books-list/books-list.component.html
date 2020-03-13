@@ -26,7 +26,7 @@
 
 </mat-accordion>
 
-<div class="container mb-3 w-75">
+<div class="container">
 
   <p *ngIf="!books?.length" class="resultMessage">{{ messageError }}</p>
 
@@ -36,6 +36,8 @@
       <p class="book-title">{{ book.title }}</p>
       <p>{{ book.description }}</p>
       <p>{{ book.price | currency }}</p>
+      <p>Publication date: </p>
+      <p>Publisher phone number: </p>
       <button mat-stroked-button color="primary" type="button" (click)="openBookDetail(book)">Click Here for Some Detail</button>
     </div>
   </div>
