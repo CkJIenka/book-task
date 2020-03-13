@@ -7,7 +7,8 @@ import { TextMaskModule } from 'angular2-text-mask';
 import {
   MatInputModule, MatButtonModule, MatCardModule,
   MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
-  MatTableModule,
+  MatTableModule, MatChipsModule, MatIconModule,
+  MatAutocompleteModule,
 } from '@angular/material';
 
 import { PaginationComponent } from './components/pagination/pagination.component';
@@ -41,6 +42,9 @@ import { DatesComponent } from './components/dates/dates.component';
     MatNativeDateModule,
     TextMaskModule,
     MatTableModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
   ],
   exports: [
     PaginationComponent,
@@ -55,6 +59,9 @@ import { DatesComponent } from './components/dates/dates.component';
     MatTableModule,
     PricesComponent,
     DatesComponent,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
   ],
 })
 export class SharedModule { }

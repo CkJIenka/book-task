@@ -1,9 +1,13 @@
 import {
   Component, EventEmitter, OnDestroy, OnInit, Output, Input,
 } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
+
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 import { Subject } from 'rxjs';
+
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 
@@ -22,6 +26,15 @@ export class BookSearchComponent implements OnInit, OnDestroy {
 
   public bookSearchForm: FormGroup;
   public phoneNumberMask = PHONE_NUMBER_MASK;
+  public separatorKeysCodes: number[] = [ENTER, COMMA];
+  public genres = [];
+  public allGenres = [
+    { id: 1, name: 'Drama' },
+    { id: 2, name: 'Horror' },
+    { id: 3, name: 'Fantasy' },
+    { id: 4, name: 'Science' },
+    { id: 5, name: 'Comedy' },
+  ];
   private _destroy$ = new Subject<void>();
 
   constructor(
@@ -45,6 +58,9 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
   public get dateEnd(): AbstractControl | null {
     return this.bookSearchForm.get('date.dateEnd');
+  }
+  public get bookGenres(): AbstractControl | null {
+    return this.bookSearchForm.get('bookGenres');
   }
 
   public ngOnInit(): void {
@@ -82,6 +98,20 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     this.dateEnd.setValue(date.controls.dateEnd.value);
   }
 
+  public removeGenreFromSelect(genre: string): void {
+    const index = this.genres.indexOf(genre);
+
+    if (index >= 0) {
+      this.genres.splice(index, 1);
+    }
+  }
+
+  public selectedBookGenre(event: MatAutocompleteSelectedEvent): void {
+    if (this.genres.indexOf(event.option.value) === -1) {
+      this.genres.push(event.option.value.name);
+    }
+  }
+
   private _initForm(): void {
     this.bookSearchForm = this._formBuilder.group({
       title: '',
@@ -94,6 +124,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
         dateEnd: null,
       }),
       phoneNumber: null,
+      bookGenres: '',
     });
   }
 

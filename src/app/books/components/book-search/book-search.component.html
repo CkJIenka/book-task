@@ -9,6 +9,7 @@
   <!-- Prices -->
   <app-prices class="col-12" [priceValue]="priceControl" (priceSearchValue)="setPriceSearchValue($event)"></app-prices>
 
+  <!-- Dates -->
   <app-dates class="col-12" [dateValue]="dateControl" (dateSearchValue)="setDateSearchValue($event)"></app-dates>
 
   <!-- Publisher Phone Number -->
@@ -19,6 +20,33 @@
            formControlName="phoneNumber"
            [textMask]="{mask: phoneNumberMask}"
            placeholder="x(xxx)-xxx-xx-xx">
+  </mat-form-field>
+
+  <!-- Genres -->
+  <mat-form-field class="col-12">
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let genre of genres"
+        [selectable]=true
+        [removable]=true
+        (removed)="removeGenreFromSelect(genre)">
+        {{ genre }}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+      <input
+        #genreInput
+        placeholder="Enter book's genre"
+        formControlName="bookGenres"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+       >
+    </mat-chip-list>
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
+      <mat-option *ngFor="let genre of allGenres" [value]="genre">
+        {{ genre.name }}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 
   <div class="col-12">
