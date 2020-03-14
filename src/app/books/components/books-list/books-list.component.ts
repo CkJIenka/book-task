@@ -100,7 +100,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
             searchValue.date.dateEnd,
             'MM-dd-yyyy',
         ),
-        genres: searchValue.bookGenres.toString(),
+        genres: searchValue.bookGenres.join(),
       },
     });
   }

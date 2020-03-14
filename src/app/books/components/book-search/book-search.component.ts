@@ -76,6 +76,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   public setSearchValue(): void {
+    this.bookGenres.setValue(this.genres);
     this.fullSearchValue.emit(this.bookSearchForm.getRawValue());
   }
 
@@ -104,14 +105,12 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     if (index >= 0) {
       this.genres.splice(index, 1);
     }
-    this.bookGenres.setValue(this.genres);
   }
 
   public selectedBookGenre(event: MatAutocompleteSelectedEvent): void {
-    if (this.genres.indexOf(event.option.value) === -1) {
+    if (this.genres.indexOf(event.option.value.name) === -1) {
       this.genres.push(event.option.value.name);
     }
-    this.bookGenres.setValue(this.genres);
   }
 
   private _initForm(): void {
@@ -131,6 +130,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   private _patchFormValue(searchValue: any): void {
+    this.genres = searchValue.genres.split(',');
     this.bookSearchForm.patchValue({
       title: searchValue.title_cont,
       price: {
