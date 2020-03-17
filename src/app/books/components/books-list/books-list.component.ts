@@ -89,7 +89,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
       queryParamsHandling: 'merge',
       queryParams: {
         page: '1',
-        title_cont: searchValue.title,
+        title_cont: !!searchValue.title ? searchValue.title : null,
         price_from: searchValue.price.priceFrom,
         price_to: searchValue.price.priceTo,
         date_start: this._datePipe.transform(
@@ -100,7 +100,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
             searchValue.date.dateEnd,
             'MM-dd-yyyy',
         ),
-        genres: searchValue.bookGenres.join(),
+        genres: searchValue.bookGenres.length > 0 ? searchValue.bookGenres.join() : null,
       },
     });
   }

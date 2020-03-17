@@ -4,14 +4,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { customDateFormValidator } from '@app/shared/utils/custom-date-form-validator';
 
 @Component({
-  selector: 'app-dates',
-  templateUrl: './dates.component.html',
-  styleUrls: ['./dates.component.css'],
+  selector: 'app-dates-form',
+  templateUrl: './dates-form.component.html',
+  styleUrls: ['./dates-form.component.css'],
 })
-export class DatesComponent implements OnInit {
+export class DatesFormComponent implements OnInit {
 
   @Input()
-  public dateValue: any;
+  public dateValue: FormGroup;
 
   @Output()
   public readonly dateSearchValue = new EventEmitter<object>();

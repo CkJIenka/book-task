@@ -1,0 +1,26 @@
+  <mat-form-field class="col-12">
+  <mat-chip-list #chipList>
+    <mat-chip
+      *ngFor="let genre of genres"
+      [selectable]=true
+      [removable]=true
+      (removed)="removeGenreFromSelect(genre)">
+      {{ genre }}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input
+      #genreInput
+      placeholder="Enter book's genre"
+      [matAutocomplete]="auto"
+      [matChipInputFor]="chipList"
+      (matChipInputTokenEnd)="addGenre($event)"
+     >
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
+    <mat-option 
+    *ngFor="let genre of allGenres" [value]="genre" 
+    [disabled]="genres.indexOf(genre.name) !== -1 ? true : false">
+      {{ genre.name }}
+    </mat-option>
+  </mat-autocomplete>
+</mat-form-field>

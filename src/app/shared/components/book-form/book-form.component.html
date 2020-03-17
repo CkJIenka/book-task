@@ -35,17 +35,7 @@
       </mat-form-field>
 
       <!-- Publisher Phone Number -->
-      <mat-form-field class="col-7">
-        <mat-label>Enter publisher phone number</mat-label>
-        <input matInput
-               type="text" name="phoneNumber"
-               formControlName="phoneNumber"
-               [textMask]="{mask: phoneNumberMask}"
-               placeholder="x(xxx)-xxx-xx-xx" required>
-        <mat-error *ngIf="phoneNumber.touched && phoneNumber.invalid && phoneNumber.errors.required">
-          Publisher phone number date is required.
-        </mat-error>
-      </mat-form-field>
+      <app-phone-custom-control formControlName="phoneNumber" class="col-12 pl-0"></app-phone-custom-control>
 
       <div class="buttonController col-12">
         <button mat-stroked-button color="primary" type="submit" [disabled]="bookForm.invalid" class="button mr-3">Submit</button>

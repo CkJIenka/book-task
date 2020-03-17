@@ -5,9 +5,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { DatePipe, Location } from '@angular/common';
 
 import { Subject } from 'rxjs';
-import {debounce, debounceTime, takeUntil} from 'rxjs/operators';
+import { debounce, debounceTime, takeUntil } from 'rxjs/operators';
 
-import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 import { IBook } from '@app/shared/interfaces/books/books.interface';
 
 @Component({
@@ -25,7 +24,6 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
   public readonly bookSubmitted = new EventEmitter<object>();
 
   public bookForm: FormGroup;
-  public phoneNumberMask = PHONE_NUMBER_MASK.slice();
   private _destroy$ = new Subject<void>();
 
   constructor(

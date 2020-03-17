@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { TextMaskModule } from 'angular2-text-mask';
 import {
   MatInputModule, MatButtonModule, MatCardModule,
   MatExpansionModule, MatDatepickerModule, MatNativeDateModule,
@@ -16,8 +15,10 @@ import { AuthorFormComponent } from './components/author-form/author-form.compon
 import { BookFormComponent } from './components/book-form/book-form.component';
 import { AuthorFormReactiveComponent } from './components/author-form-reactive/author-form-reactive.component';
 import { AuthorFormTemplateComponent } from './components/author-form-template/author-form-template.component';
-import { PricesComponent } from './components/prices/prices.component';
-import { DatesComponent } from './components/dates/dates.component';
+import { PricesFormComponent } from './components/prices-form/prices-form.component';
+import { DatesFormComponent } from './components/dates-form/dates-form.component';
+
+import { CustomControlModule } from '@libs/custom-control-value-accessor';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,8 @@ import { DatesComponent } from './components/dates/dates.component';
     BookFormComponent,
     AuthorFormReactiveComponent,
     AuthorFormTemplateComponent,
-    PricesComponent,
-    DatesComponent,
+    PricesFormComponent,
+    DatesFormComponent,
   ],
   imports: [
     CommonModule,
@@ -40,11 +41,11 @@ import { DatesComponent } from './components/dates/dates.component';
     MatExpansionModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    TextMaskModule,
     MatTableModule,
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
+    CustomControlModule,
   ],
   exports: [
     PaginationComponent,
@@ -55,10 +56,9 @@ import { DatesComponent } from './components/dates/dates.component';
     ReactiveFormsModule,
     MatInputModule,
     MatDatepickerModule,
-    TextMaskModule,
     MatTableModule,
-    PricesComponent,
-    DatesComponent,
+    PricesFormComponent,
+    DatesFormComponent,
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,

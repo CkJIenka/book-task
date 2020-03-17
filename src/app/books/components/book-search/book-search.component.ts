@@ -3,11 +3,7 @@ import {
 } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-
 import { Subject } from 'rxjs';
-
-import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 
@@ -25,16 +21,6 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   public readonly fullSearchValue = new EventEmitter<object>();
 
   public bookSearchForm: FormGroup;
-  public phoneNumberMask = PHONE_NUMBER_MASK;
-  public separatorKeysCodes: number[] = [ENTER, COMMA];
-  public genres = [];
-  public allGenres = [
-    { id: 1, name: 'Drama' },
-    { id: 2, name: 'Horror' },
-    { id: 3, name: 'Fantasy' },
-    { id: 4, name: 'Science' },
-    { id: 5, name: 'Comedy' },
-  ];
   private _destroy$ = new Subject<void>();
 
   constructor(
@@ -76,7 +62,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   public setSearchValue(): void {
-    this.bookGenres.setValue(this.genres);
+    // this.bookGenres.setValue(this._genres);
     this.fullSearchValue.emit(this.bookSearchForm.getRawValue());
   }
 
@@ -99,20 +85,6 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     this.dateEnd.setValue(date.controls.dateEnd.value);
   }
 
-  public removeGenreFromSelect(genre: string): void {
-    const index = this.genres.indexOf(genre);
-
-    if (index >= 0) {
-      this.genres.splice(index, 1);
-    }
-  }
-
-  public selectedBookGenre(event: MatAutocompleteSelectedEvent): void {
-    if (this.genres.indexOf(event.option.value.name) === -1) {
-      this.genres.push(event.option.value.name);
-    }
-  }
-
   private _initForm(): void {
     this.bookSearchForm = this._formBuilder.group({
       title: '',
@@ -130,7 +102,6 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   private _patchFormValue(searchValue: any): void {
-    this.genres = searchValue.genres.split(',');
     this.bookSearchForm.patchValue({
       title: searchValue.title_cont,
       price: {
@@ -141,6 +112,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
         dateStart: !!searchValue.date_start ? new Date(searchValue.date_start) : null,
         dateEnd: !!searchValue.date_end ? new Date(searchValue.date_end) : null,
       },
+      bookGenres: searchValue.genres ? searchValue.genres.split(',') : [],
     });
   }
 

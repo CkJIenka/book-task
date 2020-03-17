@@ -3,7 +3,7 @@
 <mat-form-field class="col-6">
   <mat-label>Enter book's price from</mat-label>
   <input matInput="number" type="number" name="priceFrom" formControlName="priceFrom" min="0">
-  <mat-error *ngIf="priceFrom.touched && priceFrom.invalid && priceFrom.errors.min">
+  <mat-error *ngIf="priceFrom.hasError('min')">
     Price can't be less than 0.
   </mat-error>
   <mat-error *ngIf="priceFrom.hasError('required')">
@@ -21,7 +21,7 @@
   <mat-error *ngIf="priceTo.hasError('required')">
     Price to is required.
   </mat-error>
-  <mat-error *ngIf="priceTo.touched && priceTo.invalid && priceTo.errors.min">
+  <mat-error *ngIf="priceTo.hasError('min')">
     Price can't be less than 0 or start price.
   </mat-error> 
 </mat-form-field>

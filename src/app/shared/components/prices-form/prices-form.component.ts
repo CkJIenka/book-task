@@ -1,22 +1,22 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { debounceTime, takeUntil, pairwise, map, filter } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-prices',
-  templateUrl: './prices.component.html',
-  styleUrls: ['./prices.component.css'],
+  selector: 'app-prices-form',
+  templateUrl: './prices-form.component.html',
+  styleUrls: ['./prices-form.component.css'],
 })
 
-export class PricesComponent implements OnInit {
+export class PricesFormComponent implements OnInit {
 
   @Input()
-  public priceValue: any;
+  public priceValue: FormGroup;
 
   @Output()
-  public readonly priceSearchValue = new EventEmitter<object>();
+  public readonly priceSearchValue = new EventEmitter<FormGroup['controls']>();
 
   public price: FormGroup;
   private _destroy$ = new Subject<void>();
@@ -53,6 +53,7 @@ export class PricesComponent implements OnInit {
   }
 
   private _patchPriceValue(): void {
+    this.price.markAllAsTouched();
     this.price.patchValue({
       priceFrom: this.priceValue.controls.priceFrom.value,
       priceTo: this.priceValue.controls.priceTo.value,

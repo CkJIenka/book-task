@@ -7,47 +7,16 @@
   </mat-form-field>
 
   <!-- Prices -->
-  <app-prices class="col-12" [priceValue]="priceControl" (priceSearchValue)="setPriceSearchValue($event)"></app-prices>
+  <app-prices-form class="col-12" [priceValue]="priceControl" (priceSearchValue)="setPriceSearchValue($event)"></app-prices-form>
 
   <!-- Dates -->
-  <app-dates class="col-12" [dateValue]="dateControl" (dateSearchValue)="setDateSearchValue($event)"></app-dates>
+  <app-dates-form class="col-12" [dateValue]="dateControl" (dateSearchValue)="setDateSearchValue($event)"></app-dates-form>
 
   <!-- Publisher Phone Number -->
-  <mat-form-field class="col-6">
-    <mat-label>Enter publisher phone number</mat-label>
-    <input matInput
-           type="text" name="phoneNumber"
-           formControlName="phoneNumber"
-           [textMask]="{mask: phoneNumberMask}"
-           placeholder="x(xxx)-xxx-xx-xx">
-  </mat-form-field>
+  <app-phone-custom-control formControlName="phoneNumber" class="col-12 pl-0"></app-phone-custom-control>
 
   <!-- Genres -->
-  <mat-form-field class="col-12">
-    <mat-chip-list #chipList>
-      <mat-chip
-        *ngFor="let genre of genres"
-        [selectable]=true
-        [removable]=true
-        (removed)="removeGenreFromSelect(genre)">
-        {{ genre }}
-        <mat-icon matChipRemove>cancel</mat-icon>
-      </mat-chip>
-      <input
-        #genreInput
-        placeholder="Enter book's genre"
-        formControlName="bookGenres"
-        [matAutocomplete]="auto"
-        [matChipInputFor]="chipList"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-       >
-    </mat-chip-list>
-   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
-      <mat-option *ngFor="let genre of allGenres" [value]="genre">
-        {{ genre.name }}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+  <app-genres-custom-control formControlName="bookGenres" class="col-12 pl-0"></app-genres-custom-control>
 
   <div class="col-12">
     <button mat-stroked-button color="primary" type="submit" [disabled]="bookSearchForm.invalid">
