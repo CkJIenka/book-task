@@ -10,15 +10,15 @@
     </mat-chip>
     <input
       #genreInput
+      [formControl]="genreCtrl"
       placeholder="Enter book's genre"
       [matAutocomplete]="auto"
       [matChipInputFor]="chipList"
-      (matChipInputTokenEnd)="addGenre($event)"
      >
   </mat-chip-list>
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
     <mat-option 
-    *ngFor="let genre of allGenres" [value]="genre" 
+    *ngFor="let genre of filteredGenres | async" [value]="genre" 
     [disabled]="genres.indexOf(genre.name) !== -1 ? true : false">
       {{ genre.name }}
     </mat-option>

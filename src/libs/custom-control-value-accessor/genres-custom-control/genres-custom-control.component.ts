@@ -1,5 +1,8 @@
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef, ViewChild, ElementRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
+
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 import { MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/material';
 
@@ -17,7 +20,9 @@ import { MatAutocompleteSelectedEvent, MatChipInputEvent } from '@angular/materi
 })
 export class GenresCustomControlComponent implements ControlValueAccessor {
 
-  public isDisabled = false;
+  @ViewChild('genreInput', { read: ElementRef, static: true })
+  public genreInput: ElementRef<HTMLInputElement>;
+
   public genres = [];
   public allGenres = [
     { id: 1, name: 'Drama' },
@@ -26,6 +31,14 @@ export class GenresCustomControlComponent implements ControlValueAccessor {
     { id: 4, name: 'Science' },
     { id: 5, name: 'Comedy' },
   ];
+  public genreCtrl = new FormControl();
+  public filteredGenres: Observable<object[]>;
+
+  constructor() {
+    this.filteredGenres = this.genreCtrl.valueChanges.pipe(
+        startWith(null),
+        map((genre: string | null) => genre ? this._filterGenres(genre) : this.allGenres.slice()));
+  }
 
   get value(): any[] {
     return this.genres;
@@ -63,22 +76,12 @@ export class GenresCustomControlComponent implements ControlValueAccessor {
     if (this.genres.indexOf(event.option.value.name) === -1) {
       this.genres.push(event.option.value.name);
     }
+    this.genreInput.nativeElement.value = '';
+    this.genreCtrl.setValue(null);
   }
 
-  public addGenre(event: MatChipInputEvent): void {
-    const input = event.input;
-    const value = event.value;
-
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.genres.push(value.trim());
-    }
-
-    // Reset the input value
-    if (input) {
-      input.value = '';
-    }
+  private _filterGenres(value: string): object[] {
+    return this.allGenres.filter((genre) => genre.name.toLowerCase().indexOf(value) === 0);
   }
-
 
 }
