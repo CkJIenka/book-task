@@ -10,3 +10,12 @@ button:disabled {
   button {
     outline: none;
   }
+
+  .invalid mat-hint,
+  .invalid mat-label {
+    color: red;
+  }
+
+  :host/deep/ .invalid .mat-form-field-underline {
+    background-color: red;
+  }
