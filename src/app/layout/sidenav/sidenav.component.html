@@ -5,6 +5,8 @@
       <a mat-list-item routerLink="books" [queryParams]="{page: 1}" routerLinkActive="active">Books</a>
       <a mat-list-item routerLink="authors" [queryParams]="{page: 1}" routerLinkActive="active">Authors</a>
     </mat-nav-list>
+    <hr class="rounded">
+    <button mat-stroked-button type="button" class="logoutButton ml-3" (click)="logOut()">Log Out</button>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="container-fluid pt-2 pb-2">

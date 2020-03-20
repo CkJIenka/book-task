@@ -1,0 +1,12 @@
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:hover {
+  background-color: rgba(132, 111, 148, 0.6);
+  cursor: pointer;
+}
+    
+button {
+  outline: none;
+}

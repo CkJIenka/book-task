@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '@app/shared';
+import { CanActivateRouteGuard } from '@app/shared/utils/can-activate-route-guard';
 
 import { AppComponent } from './app.component';
 import { UrlInterceptor } from './interceptor/url-interceptor';
@@ -23,6 +24,7 @@ import { LayoutModule } from './layout/layout.module';
     LayoutModule,
   ],
   providers: [
+    CanActivateRouteGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UrlInterceptor,

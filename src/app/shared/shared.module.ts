@@ -62,6 +62,7 @@ import { CustomControlModule } from '@libs/custom-control-value-accessor';
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
+    MatCardModule,
   ],
 })
 export class SharedModule { }

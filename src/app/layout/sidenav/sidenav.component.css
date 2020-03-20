@@ -23,3 +23,8 @@
 .side-nav-bar .active {
   color: #d7b6ec;
 }
+
+.logoutButton {
+  outline: none;
+  background-color: #eee;
+}

@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { MatListModule, MatSidenavModule } from '@angular/material';
 
+import { SharedModule } from '@app/shared';
+
 import { SidenavComponent } from './sidenav/sidenav.component';
 
 import { ToastrModule } from '@libs/toastr';
@@ -18,6 +20,7 @@ import { ToastrModule } from '@libs/toastr';
     RouterModule,
     MatListModule,
     ToastrModule,
+    SharedModule,
   ],
   exports: [
     SidenavComponent,
