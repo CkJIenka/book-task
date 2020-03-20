@@ -6,4 +6,6 @@ export interface IBooksQueryParams {
   price_to?: number;
   date_start?: Date | string;
   date_end?: Date | string;
+  phone_number?: string;
+  genres?: string;
 }

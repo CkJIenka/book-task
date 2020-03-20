@@ -75,6 +75,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   public fullFilterBooks(searchValue: any): void {
+    const bookGenre = [];
+    searchValue.bookGenres.forEach((value) => bookGenre.push(value.name.replace(/ /g, '_')));
     this.queryParams = {
       page: 1,
       title_cont: searchValue.title,
@@ -82,6 +84,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
       price_to: searchValue.price.priceTo,
       date_start: searchValue.date.dateStart,
       date_end: searchValue.date.dateEnd,
+      phone_number: searchValue.phoneNumber,
+      genres: bookGenre.join(),
     };
     this.getBooks(this.queryParams);
     this._router.navigate([], {
@@ -100,7 +104,9 @@ export class BooksListComponent implements OnInit, OnDestroy {
             searchValue.date.dateEnd,
             'MM-dd-yyyy',
         ),
-        genres: searchValue.bookGenres.length > 0 ? searchValue.bookGenres.join() : null,
+        phone_number:
+        searchValue.phoneNumber ? searchValue.phoneNumber : null,
+        genres: searchValue.bookGenres.length > 0 ? bookGenre.join() : null,
       },
     });
   }

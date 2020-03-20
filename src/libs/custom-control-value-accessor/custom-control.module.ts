@@ -7,9 +7,9 @@ import {
 } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
 
-import { PriceCustomControlComponent } from './price-custom-control/price-custom-control.component';
-import { GenresCustomControlComponent } from './genres-custom-control/genres-custom-control.component';
-import { PhoneCustomControlComponent } from './phone-custom-control/phone-custom-control.component';
+import { PriceCustomControlComponent } from './price-custom-control/components/price-custom-control.component';
+import { GenresCustomControlComponent } from './genres-custom-control/components/genres-custom-control.component';
+import { PhoneCustomControlComponent } from './phone-custom-control/components/phone-custom-control.component';
 
 @NgModule({
   declarations: [

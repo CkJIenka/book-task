@@ -3,5 +3,6 @@
   <input matInput
          type="text" name="phoneNumber"
          [textMask]="{mask: phoneNumberMask}"
+         [(ngModel)]='value'
          placeholder="x(xxx)-xxx-xx-xx">
 </mat-form-field>

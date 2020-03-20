@@ -17,17 +17,17 @@ import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 })
 export class PhoneCustomControlComponent implements ControlValueAccessor {
 
-  public val: any[];
+  public val: string;
   public phoneNumberMask = PHONE_NUMBER_MASK;
 
-  get value(): any[] {
+  get value(): string {
     return this.val;
   }
 
-  set value(val: any[]) {
+  set value(val: string) {
     this.val = val;
-    this.onChange(val);
-    this.onTouched(val);
+    this.onChange(val.replace(/[-_()]/g, ''));
+    this.onTouched(val.replace(/[-_()]/g, ''));
   }
 
   public onChange: any = () => {};

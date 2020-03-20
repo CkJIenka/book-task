@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AppComponent } from './app.component';
-
 const routes: Routes = [
   {
     path: 'books',
@@ -14,10 +12,15 @@ const routes: Routes = [
     loadChildren: () => import('./authors/authors.module')
       .then((m) => m.AuthorsModule),
   },
+  {
+    path: 'login',
+    loadChildren: () => import('./authorization/authorization.module')
+      .then((m) => m.AuthorizationModule),
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {enableTracing: false})],
+  imports: [RouterModule.forRoot(routes, { enableTracing: false })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {

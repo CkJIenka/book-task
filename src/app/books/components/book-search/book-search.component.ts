@@ -45,6 +45,9 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   public get dateEnd(): AbstractControl | null {
     return this.bookSearchForm.get('date.dateEnd');
   }
+  public get phoneNumber(): AbstractControl | null {
+    return this.bookSearchForm.get('phoneNumber');
+  }
   public get bookGenres(): AbstractControl | null {
     return this.bookSearchForm.get('bookGenres');
   }
@@ -62,7 +65,6 @@ export class BookSearchComponent implements OnInit, OnDestroy {
   }
 
   public setSearchValue(): void {
-    // this.bookGenres.setValue(this._genres);
     this.fullSearchValue.emit(this.bookSearchForm.getRawValue());
   }
 
@@ -85,6 +87,10 @@ export class BookSearchComponent implements OnInit, OnDestroy {
     this.dateEnd.setValue(date.controls.dateEnd.value);
   }
 
+  public clearSearchForm(): void {
+    this.bookSearchForm.reset();
+  }
+
   private _initForm(): void {
     this.bookSearchForm = this._formBuilder.group({
       title: '',
@@ -96,7 +102,7 @@ export class BookSearchComponent implements OnInit, OnDestroy {
         dateStart: null,
         dateEnd: null,
       }),
-      phoneNumber: null,
+      phoneNumber: '',
       bookGenres: [{}],
     });
   }
@@ -112,7 +118,8 @@ export class BookSearchComponent implements OnInit, OnDestroy {
         dateStart: !!searchValue.date_start ? new Date(searchValue.date_start) : null,
         dateEnd: !!searchValue.date_end ? new Date(searchValue.date_end) : null,
       },
-      bookGenres: searchValue.genres ? searchValue.genres.split(',') : [],
+      phoneNumber: searchValue.phone_number ? searchValue.phone_number : null,
+      bookGenres: !!searchValue.genres ? searchValue.genres.replace(/_/g, ' ').split(',') : [],
     });
   }
 

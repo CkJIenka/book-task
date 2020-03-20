@@ -27,6 +27,8 @@ export class BooksListService {
       'q[price_lteq]': queryParameters.price_to ? queryParameters.price_to : '',
       'q[date_gteq]': queryParameters.date_start ? queryParameters.date_start : '',
       'q[date_lteq]': queryParameters.date_end ? queryParameters.date_end : '',
+      'q[phone_cont]': queryParameters.phone_number ? queryParameters.phone_number : '',
+      'q[genres_cont]': queryParameters.genres ? queryParameters.genres : '',
     };
 
     return this._http

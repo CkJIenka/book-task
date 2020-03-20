@@ -5,7 +5,7 @@
       [selectable]=true
       [removable]=true
       (removed)="removeGenreFromSelect(genre)">
-      {{ genre }}
+      {{ genre.name }}
       <mat-icon matChipRemove>cancel</mat-icon>
     </mat-chip>
     <input
@@ -19,7 +19,7 @@
   <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedBookGenre($event)">
     <mat-option 
     *ngFor="let genre of filteredGenres | async" [value]="genre" 
-    [disabled]="genres.indexOf(genre.name) !== -1 ? true : false">
+    [disabled]="genres.indexOf(genre) !== -1">
       {{ genre.name }}
     </mat-option>
   </mat-autocomplete>

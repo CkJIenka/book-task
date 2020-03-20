@@ -19,8 +19,11 @@
   <app-genres-custom-control formControlName="bookGenres" class="col-12 pl-0"></app-genres-custom-control>
 
   <div class="col-12">
-    <button mat-stroked-button color="primary" type="submit" [disabled]="bookSearchForm.invalid">
+    <button mat-stroked-button color="primary" type="submit" [disabled]="bookSearchForm.invalid" class="mr-3">
       Search
+    </button>
+    <button mat-stroked-button color="primary" type="reset" (click)="clearSearchForm()">
+      Clear
     </button>
   </div>
 </form>
