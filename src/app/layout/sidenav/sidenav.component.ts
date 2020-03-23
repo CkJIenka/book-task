@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { AuthorizationService } from '../../core/authorization.service';
+import { AuthorizationService } from '../../core/services/authorization.service';
 
 @Component({
   selector: 'app-sidenav',

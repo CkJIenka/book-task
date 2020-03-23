@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AuthorDetailService } from '@app/core/author-detail.service';
+import { AuthorDetailService } from '@app/core/services/author-detail.service';
 
 @Component({
   selector: 'app-author-detail',

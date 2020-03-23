@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { IAuthor } from '@app/shared/interfaces/authors.interface';
-import { AuthorsListService } from '@app/core/authors-list.service';
+import { AuthorsListService } from '@app/core/services/authors-list.service';
 import { IMeta } from '@app/shared/interfaces/meta.interface';
 
 @Component({

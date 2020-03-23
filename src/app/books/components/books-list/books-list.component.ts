@@ -7,7 +7,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { MatDialog } from '@angular/material';
 
-import { BooksListService } from '@app/core/books-list.service';
+import { BooksListService } from '@app/core/services/books-list.service';
 import { IBook } from '@app/shared/interfaces/books/books.interface';
 import { IMeta } from '@app/shared/interfaces/meta.interface';
 import { IBooksQueryParams } from '@app/shared/interfaces/books/books.query-params.interface';
