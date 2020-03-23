@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ToastrService } from '@libs/toastr/services/toastr.service';
 
 @Component({
-  selector: 'app-toaster',
+  selector: 'app-toastr',
   templateUrl: './toastr.component.html',
   styleUrls: ['./toastr.component.css'],
 })
