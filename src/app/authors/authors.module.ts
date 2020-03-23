@@ -13,6 +13,9 @@ import { AuthorFormEditView } from './view/author-form-edit/author-form-edit.vie
 import { BookFormCreateView } from './view/book-form-create/book-form-create.view';
 
 import { SearchModule } from '@libs/search';
+import { PaginationModule } from '@libs/pagination';
+import { AuthorFormModule } from '@libs/author-form';
+import { BookFormModule } from '@libs/book-form';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { SearchModule } from '@libs/search';
     AuthorsRoutingModule,
     SharedModule,
     SearchModule,
+    PaginationModule,
+    AuthorFormModule,
+    BookFormModule,
   ],
 })
 export class AuthorsModule { }

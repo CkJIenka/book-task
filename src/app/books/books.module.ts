@@ -12,8 +12,11 @@ import { BooksView } from './view/books/books.view';
 import { BookFormEditView } from './view/book-form-edit/book-form-edit.view';
 import { BookSearchComponent } from './components/book-search/book-search.component';
 
+import { PaginationModule } from '@libs/pagination';
+import { BookFormModule } from '@libs/book-form';
 import { SearchModule } from '@libs/search';
 import { CustomControlModule } from '@libs/custom-control-value-accessor'
+import { FormComponentsModule } from '@libs/form-components';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { CustomControlModule } from '@libs/custom-control-value-accessor'
     MatDialogModule,
     SearchModule,
     CustomControlModule,
+    PaginationModule,
+    BookFormModule,
+    FormComponentsModule,
   ],
   exports: [
   ],

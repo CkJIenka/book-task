@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { IMeta } from '@app/shared/interfaces/meta.interface';
 
-import { PaginationService } from './pagination.service';
+import { PaginationService } from '../sevices/pagination.service';
 
 @Component({
   selector: 'app-pagination',
