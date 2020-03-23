@@ -1,12 +1,12 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthorizationComponent } from './components/authorization.component';
+import { AuthorizationView } from './view/authorization/authorization.view';
 
 const routes: Routes = [
   {
     path: '',
-    component: AuthorizationComponent,
+    component: AuthorizationView,
   },
 
 ];

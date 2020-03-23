@@ -8,7 +8,8 @@ export function passwordsMatchFormValidator(): ValidatorFn {
     if (
         password.value !== null &&
         confirmPassword.value !== null &&
-        password.value !== confirmPassword.value) {
+        password.value !== confirmPassword.value
+        ) {
       return {
         'not-same': {},
       };
