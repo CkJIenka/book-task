@@ -8,6 +8,7 @@ import { AuthorFormCreateService } from './author-form-create.service';
 import { AuthorDetailService } from './author-detail.service';
 import { AuthorizationService } from './authorization.service';
 import { AuthorsListService } from './authors-list.service';
+import { AuthorizationGuard } from './authorization-guard';
 
 @NgModule({
   providers: [
@@ -19,6 +20,7 @@ import { AuthorsListService } from './authors-list.service';
     BookFormCreateService,
     BookFormEditService,
     BooksListService,
+    AuthorizationGuard,
   ],
 })
 export class CoreModule {

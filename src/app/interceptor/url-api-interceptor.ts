@@ -4,7 +4,7 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent } from '@angular/c
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class UrlInterceptor implements HttpInterceptor {
+export class UrlApiInterceptor implements HttpInterceptor {
 
   private readonly _baseUrl = '/api/';
 

@@ -4,11 +4,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from '@app/shared';
-import { CanActivateRouteGuard } from '@app/shared/utils/can-activate-route-guard';
+import { AuthorizationGuard } from '@app/core/authorization-guard';
 
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { UrlInterceptor } from './interceptor/url-interceptor';
+import { UrlApiInterceptor } from './interceptor/url-api-interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { LayoutModule } from './layout/layout.module';
 
@@ -26,10 +26,10 @@ import { LayoutModule } from './layout/layout.module';
     CoreModule,
   ],
   providers: [
-    CanActivateRouteGuard,
+    AuthorizationGuard,
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: UrlInterceptor,
+      useClass: UrlApiInterceptor,
       multi: true,
     },
   ],
