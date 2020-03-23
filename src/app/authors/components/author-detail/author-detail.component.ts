@@ -1,11 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
-import { AuthorDetailService } from '@app/authors/services/author-detail.service';
-import {Location} from '@angular/common';
+import { AuthorDetailService } from '@app/core/author-detail.service';
 
 @Component({
   selector: 'app-author-detail',

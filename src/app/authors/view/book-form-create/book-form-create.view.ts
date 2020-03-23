@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { IBook } from '@app/shared/interfaces/books/books.interface';
-import { BookFormCreateService } from '@app/authors/services/book-form-create.service';
+import { BookFormCreateService } from '@app/core/book-form-create.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
 

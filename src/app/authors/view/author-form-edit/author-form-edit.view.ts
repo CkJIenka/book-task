@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 import { IAuthor } from '@app/shared/interfaces/authors.interface';
-import { AuthorFormEditService } from '@app/authors/services/author-form-edit.service';
+import { AuthorFormEditService } from '@app/core/author-form-edit.service';
 
 import { ToastrService } from '@libs/toastr/services/toastr.service';
 

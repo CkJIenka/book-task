@@ -2,7 +2,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthorizationService } from './../services/authorization.service';
+import { AuthorizationService } from '@app/core/authorization.service';
 
 @Component({
   selector: 'app-authorization',

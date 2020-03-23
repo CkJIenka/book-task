@@ -5,7 +5,6 @@ import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { IResponceList } from '@app/shared/interfaces/responce-list.interface';
-import { IGenres } from '@app/shared/interfaces/genres.interface';
 
 @Injectable({
   providedIn: 'root',
