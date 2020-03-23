@@ -1,7 +1,7 @@
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-import { customPasswordFormValidator } from '@app/shared/utils/custom-passwords-form-validator';
+import { passwordsMatchFormValidator } from '@app/shared/utils/passwords-match-form-validator';
 
 @Component({
   selector: 'app-registration',
@@ -46,7 +46,7 @@ export class RegistrationComponent implements OnInit {
       passwords: this._formBulder.group({
         password: ['', Validators.required],
         confirmPassword: ['', Validators.required],
-      }, { validator: customPasswordFormValidator() }),
+      }, { validator: passwordsMatchFormValidator() }),
     });
   }
 
