@@ -49,7 +49,10 @@ export class BookFormComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.book.currentValue !== changes.book.previousValue) {
+    if (
+      changes.book &&
+      changes.book.currentValue !== changes.book.previousValue
+      ) {
       this._setInputValue(changes.book.currentValue);
     }
   }

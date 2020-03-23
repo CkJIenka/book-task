@@ -40,6 +40,7 @@ export class AuthorFormReactiveComponent implements OnInit, OnChanges, OnDestroy
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (
+      changes.authorReactive &&
       changes.authorReactive.currentValue !== null &&
       changes.authorReactive.currentValue !== changes.authorReactive.previousValue
     ) {

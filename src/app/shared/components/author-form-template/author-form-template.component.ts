@@ -23,6 +23,7 @@ export class AuthorFormTemplateComponent implements OnInit, OnChanges {
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (
+      changes.authorTemplate &&
       changes.authorTemplate.currentValue !== null &&
       changes.authorTemplate.currentValue !== changes.authorTemplate.previousValue
     ) {
