@@ -10,7 +10,7 @@ import { IMeta } from '@app/shared/interfaces/meta.interface';
 @Component({
   selector: 'app-authors-list',
   templateUrl: './authors-list.component.html',
-  styleUrls: ['./authors-list.component.css'],
+  styleUrls: ['./authors-list.component.scss'],
 })
 export class AuthorsListComponent implements OnInit, OnDestroy {
 

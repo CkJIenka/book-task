@@ -5,12 +5,10 @@ import { AbstractControl, FormBuilder, FormGroup } from '@angular/forms';
 
 import { Subject } from 'rxjs';
 
-import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
-
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
-  styleUrls: ['./book-search.component.css'],
+  styleUrls: ['./book-search.component.scss'],
 })
 export class BookSearchComponent implements OnInit, OnDestroy {
 

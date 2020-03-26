@@ -12,7 +12,7 @@ import { IBook } from '@app/shared/interfaces/books/books.interface';
 @Component({
   selector: 'app-book-form',
   templateUrl: './book-form.component.html',
-  styleUrls: ['./book-form.component.css'],
+  styleUrls: ['./book-form.component.scss'],
   providers: [DatePipe],
 })
 export class BookFormComponent implements OnInit, OnDestroy, OnChanges {

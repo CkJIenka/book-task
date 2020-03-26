@@ -20,7 +20,11 @@ export class AuthorizationService {
   }
 
   public isAuthorized(): boolean {
-    this.isAuthorizedFlag = !!localStorage.getItem('authFlag');
+    if (localStorage.getItem('authFlag') === 'true') {
+      this.isAuthorizedFlag = true;
+    } else {
+      this.isAuthorizedFlag = false;
+    }
 
     return this.isAuthorizedFlag;
   }

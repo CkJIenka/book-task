@@ -4,7 +4,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/for
 @Component({
   selector: 'app-price-custom-control',
   templateUrl: './price-custom-control.component.html',
-  styleUrls: ['./price-custom-control.component.css'],
+  styleUrls: ['./price-custom-control.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -11,7 +11,7 @@ import { ToastrService } from '@libs/toastr/services/toastr.service';
 
 @Component({
   templateUrl: './author-form-create.view.html',
-  styleUrls: ['./author-form-create.view.css'],
+  styleUrls: ['./author-form-create.view.scss'],
 })
 export class AuthorFormCreateView implements OnInit, OnDestroy {
 

@@ -7,7 +7,7 @@ import { IAuthor } from '@app/shared/interfaces/authors.interface';
 @Component({
   selector: 'app-author-form-template',
   templateUrl: './author-form-template.component.html',
-  styleUrls: ['./author-form-template.component.css'],
+  styleUrls: ['./author-form-template.component.scss'],
 })
 export class AuthorFormTemplateComponent implements OnInit, OnChanges {
 

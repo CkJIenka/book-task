@@ -6,7 +6,7 @@ import { AuthorizationService } from '@app/core/services/authorization.service';
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
-  styleUrls: ['./sidenav.component.css'],
+  styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
 

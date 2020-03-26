@@ -8,7 +8,7 @@ import { IBook } from '@app/shared/interfaces/books/books.interface';
 @Component({
   selector: 'app-book-description',
   templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.css'],
+  styleUrls: ['./book-detail.component.scss'],
 })
 export class BookDetailComponent implements OnInit {
 

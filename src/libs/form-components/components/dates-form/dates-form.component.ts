@@ -6,7 +6,7 @@ import { customDateFormValidator } from '@app/shared/utils/custom-date-form-vali
 @Component({
   selector: 'app-dates-form',
   templateUrl: './dates-form.component.html',
-  styleUrls: ['./dates-form.component.css'],
+  styleUrls: ['./dates-form.component.scss'],
 })
 export class DatesFormComponent implements OnInit {
 

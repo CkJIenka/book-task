@@ -13,7 +13,7 @@ import { GenresCustomControlService } from './../services/genres-custom-control.
 @Component({
   selector: 'app-genres-custom-control',
   templateUrl: './genres-custom-control.component.html',
-  styleUrls: ['./genres-custom-control.component.css'],
+  styleUrls: ['./genres-custom-control.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

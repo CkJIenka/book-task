@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './registration.view.html',
-  styleUrls: ['./registration.view.css'],
+  styleUrls: ['./registration.view.scss'],
 })
 export class RegistrationView implements OnInit {
 

@@ -12,7 +12,7 @@ import { IAuthor } from '@app/shared/interfaces/authors.interface';
 @Component({
   selector: 'app-author-form-reactive',
   templateUrl: './author-form-reactive.component.html',
-  styleUrls: ['./author-form-reactive.component.css'],
+  styleUrls: ['./author-form-reactive.component.scss'],
 })
 export class AuthorFormReactiveComponent implements OnInit, OnChanges, OnDestroy {
 

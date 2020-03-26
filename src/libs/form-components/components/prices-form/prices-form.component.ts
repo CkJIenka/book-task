@@ -1,13 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
-import { debounceTime, takeUntil, pairwise, map, filter } from 'rxjs/operators';
+import { debounceTime, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-prices-form',
   templateUrl: './prices-form.component.html',
-  styleUrls: ['./prices-form.component.css'],
+  styleUrls: ['./prices-form.component.scss'],
 })
 
 export class PricesFormComponent implements OnInit {

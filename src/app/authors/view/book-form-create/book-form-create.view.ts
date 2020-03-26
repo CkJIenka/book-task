@@ -12,7 +12,7 @@ import { ToastrService } from '@libs/toastr/services/toastr.service';
 
 @Component({
   templateUrl: './book-form-create.view.html',
-  styleUrls: ['./book-form-create.view.css'],
+  styleUrls: ['./book-form-create.view.scss'],
 })
 export class BookFormCreateView implements OnInit, OnDestroy {
 

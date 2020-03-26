@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './books.view.html',
-  styleUrls: ['./books.view.css'],
+  styleUrls: ['./books.view.scss'],
 })
 export class BooksView implements OnInit {
 

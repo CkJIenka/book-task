@@ -6,7 +6,7 @@ import { PHONE_NUMBER_MASK } from '@app/shared/utils/text-mask';
 @Component({
   selector: 'app-phone-custom-control',
   templateUrl: './phone-custom-control.component.html',
-  styleUrls: ['./phone-custom-control.component.css'],
+  styleUrls: ['./phone-custom-control.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

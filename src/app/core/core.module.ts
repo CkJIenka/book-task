@@ -8,7 +8,7 @@ import { AuthorFormCreateService } from './services/author-form-create.service';
 import { AuthorDetailService } from './services/author-detail.service';
 import { AuthorizationService } from './services/authorization.service';
 import { AuthorsListService } from './services/authors-list.service';
-import { AuthorizationGuard } from './services/authorization-guard';
+import { AuthorizationGuard } from './authorization-guard';
 
 @NgModule({
   providers: [

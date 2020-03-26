@@ -10,7 +10,7 @@ import { AuthorDetailService } from '@app/core/services/author-detail.service';
 @Component({
   selector: 'app-author-detail',
   templateUrl: './author-detail.component.html',
-  styleUrls: ['./author-detail.component.css'],
+  styleUrls: ['./author-detail.component.scss'],
 })
 export class AuthorDetailComponent implements OnInit, OnDestroy {
 

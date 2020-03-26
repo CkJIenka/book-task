@@ -13,7 +13,7 @@ import { ToastrService } from '@libs/toastr/services/toastr.service';
 
 @Component({
   templateUrl: './author-form-edit.view.html',
-  styleUrls: ['./author-form-edit.view.css'],
+  styleUrls: ['./author-form-edit.view.scss'],
 })
 export class AuthorFormEditView implements OnInit {
 
