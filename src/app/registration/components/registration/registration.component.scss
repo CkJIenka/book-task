@@ -1,21 +1,25 @@
-button:disabled {
-    cursor: not-allowed;
-  }
-  
-button:hover {
-  background-color: rgba(132, 111, 148, 0.6);
-  cursor: pointer;
-}
+@import "src/styles/variables";
+@import "src/styles/mixin";
       
 button {
   outline: none;
+  &:hover {
+    cursor: pointer;
+    background-color: $button-hover-background-color;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:active {
+    @include button-active;
+  }
 }
 
 .invalid mat-hint,
 .invalid mat-label {
-  color: red;
+  color: $error-color;
 }
 
-:host .invalid .mat-form-field-underline {
-  background-color: red;
+::ng-deep .invalid .mat-form-field-underline {
+  background-color: $error-color;
 }

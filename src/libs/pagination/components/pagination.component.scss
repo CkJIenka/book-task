@@ -1,3 +1,5 @@
+@import "src/styles/mixin";
+
 .button-paginator {
   display: inline;
 }
@@ -7,7 +9,7 @@
 }
 
 button {
-  outline: none;
+  @include button-outline;
 }
 
 @media (max-width: 425px) {

@@ -1,7 +1,12 @@
-.back-button:hover {
-  background-color: rgba(132, 111, 148, 0.6);
-}
+@import "src/styles/variables";
+@import "src/styles/mixin";
 
 button {
-  outline: none;
+  @include button-outline;
+  &:hover {
+    background-color: $button-hover-background-color;
+  }
+  &:active {
+    @include button-active;
+  }
 }

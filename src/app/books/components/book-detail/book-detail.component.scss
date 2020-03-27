@@ -1,3 +1,6 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
 img {
   max-width: 100px;
   float: left;
@@ -6,9 +9,11 @@ img {
 
 h2 {
   text-align: center;
-  font-weight: bold;
-  font-size: 20px;
-  font-family: Lemonada, cursive;
+  font: {
+    weight: bold;
+    size: 20px;
+    family: Lemonada, cursive;
+  }
 }
 
 p {
@@ -19,15 +24,11 @@ p {
 button {
   padding: 5px;
   margin: 10px auto;
-  outline: none;
+  @include button-outline;
+  &:hover {
+    background-color: $button-hover-background-color;
+  }
+  &:active {
+    @include button-active;
+  }
 }
-
-button:hover {
-  background-color: rgba(132, 111, 148, 0.6);
-}
-
-button:active {
-  background-color: white;
-  opacity: 0.5;
-}
-
