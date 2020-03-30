@@ -1,14 +1,5 @@
-.container h3 {
-  color: #666666;
-}
-
-.container input {
-  font-weight: bold;
-  border-radius: 5px;
-  border: slategrey 1px solid;
-  outline: none;
-  color: black;
-}
+@import "src/styles/variables";
+@import "src/styles/mixin";
 
 p {
   font-size: 24px;
@@ -18,13 +9,10 @@ img {
   max-width: 250px;
 }
 
-.change-author:hover,
-.add-new-book:hover,
-.back-button:hover {
-  background-color: rgba(132, 111, 148, 0.6);
-  cursor: pointer;
-}
-
 button {
-  outline: none;
+  @include button-outline;
+  &:hover {
+    background-color: $button-hover-background-color;
+    cursor: pointer;
+  }
 }

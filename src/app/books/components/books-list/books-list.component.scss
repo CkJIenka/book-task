@@ -1,3 +1,6 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -19,16 +22,19 @@
 }
 
 .book-title {
-  font-weight: bold;
-  font-size: 20px;
-  font-family: Lemonada, cursive;
+  font: {
+    weight: bold;
+    size:20px;
+    family: Lemonada, cursive;
+  }
 }
 
-.book-description button:hover {
-  background-color: rgba(132, 111, 148, 0.6);
-}
-
-.book-description button:active {
-  background-color: white;
-  opacity: 0.5;
+.book-description button {
+  @include button-outline;
+  &:hover {
+    background-color: $button-hover-background-color;
+  }
+  &:active {
+    @include button-active;
+  }
 }

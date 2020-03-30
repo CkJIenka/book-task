@@ -1,18 +1,16 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
 .container h3 {
   color: #666666;
-}
-
-.container li {
-  list-style-type: none;
 }
 
 .container a {
   text-decoration: none;
   color: black;
-}
-
-.container a:hover {
-  color: #9e8b20;
+  &:hover {
+    color: #9e8b20;
+  }
 }
 
 .deleteButton {
@@ -21,7 +19,7 @@
 
 .deleteButton:hover,
 .add-author:hover {
-  background-color: rgba(132, 111, 148, 0.6);
+  background-color: $button-hover-background-color;
 }
 
 app-pagination {
@@ -29,7 +27,10 @@ app-pagination {
 }
 
 button {
-  outline: none;
+  @include button-outline;
+  &:active {
+    @include button-active;
+  }
 }
 
 img {

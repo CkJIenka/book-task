@@ -1,7 +1,15 @@
-button {
-  outline: none;
-}
+@import "src/styles/variables";
+@import "src/styles/mixin";
 
-button:disabled {
-  cursor: not-allowed;
+button {
+  @include button-outline;
+  &:disabled {
+    cursor: not-allowed;
+  }
+  &:hover {
+    background-color: $button-hover-background-color;
+  }
+  &:active {
+    @include button-active;
+  }
 }

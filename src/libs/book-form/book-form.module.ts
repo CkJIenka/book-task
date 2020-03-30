@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { MatInputModule, MatDatepickerModule, MatCardModule } from '@angular/material';
+import {
+  MatInputModule, MatDatepickerModule, MatCardModule, MatButtonModule,
+} from '@angular/material';
 
 import { BookFormComponent } from './components/book-form/book-form.component';
 
@@ -21,6 +23,7 @@ import { CustomControlModule } from '@libs/custom-control-value-accessor';
     FormComponentsModule,
     MatCardModule,
     CustomControlModule,
+    MatButtonModule,
   ],
   exports: [
     BookFormComponent,

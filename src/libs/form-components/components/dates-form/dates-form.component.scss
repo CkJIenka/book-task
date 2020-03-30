@@ -1,8 +1,10 @@
+@import "src/styles/variables.scss";
+
 .invalid mat-hint,
 .invalid mat-label {
-  color: #ff0000;
+  color: $error-color;
 }
 
-:host .invalid .mat-form-field-underline {
-  background-color: #ff0000;
+::ng-deep .invalid .mat-form-field-underline {
+  background-color: $error-color;
 }

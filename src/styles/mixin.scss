@@ -1,0 +1,8 @@
+@mixin button-outline {
+    outline: none;
+}
+
+@mixin button-active {
+    background-color: white;
+    opacity: 0.5;
+}
